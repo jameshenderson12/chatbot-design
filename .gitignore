@@ -1,0 +1,6 @@
+# Ignore _notes and db_connect directories
+_notes/
+db_connect/
+
+# Ignore XML file types
+*.yml
