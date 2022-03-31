@@ -7,8 +7,8 @@
 	$surname = ucfirst(TRIM($_POST['surname']));
 	$username = filter_var(TRIM($_POST['username'], FILTER_SANITIZE_STRING));
 	$email = TRIM($_POST['email']);
-	$user_type = filter_var(TRIM($_POST['user_type'], FILTER_SANITIZE_STRING));
-	$location = filter_var(TRIM($_POST['location'], FILTER_SANITIZE_STRING));
+	$user_type = TRIM($_POST['user_type']);
+	$location = TRIM($_POST['location']);
 	$password = filter_var(TRIM($_POST['password'], FILTER_SANITIZE_STRING));
 
 	if ($user_type == "Academic") {
