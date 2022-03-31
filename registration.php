@@ -184,18 +184,18 @@ include('includes/header.inc.php');
 
     <script>
       $(document).ready(function(){
-      	$('#username').keyup(username_check);
-  		$('#username').addClass("incorrect");
+        $('#username').keyup(username_check);
+  		  $('#username').addClass("incorrect");
       });
 
       function username_check(){
       	var username = $('#username').val();
       	if(username == "" || username.length < 4) {
-  			$('#username').removeClass("correct");
-      		$('#username').addClass("incorrect");
-  			$('#username').css('border', '1px #CCC solid');
-  			$('#un-msg').html("");
-      		//$('#tick').hide();
+  			     $('#username').removeClass("correct");
+      		   $('#username').addClass("incorrect");
+  			     $('#username').css('border', '1px #CCC solid');
+  			     $('#un-msg').html("");
+      		   //$('#tick').hide();
   			}
   			else {
   				jQuery.ajax({
@@ -280,7 +280,7 @@ include('includes/header.inc.php');
               <!-- User Type -->
               <div class="col-md">
                 <div class="form-floating">
-  			             <select name="user_type" class="form-select" id="user_type" aria-label="Select user type" onBlur="return validateDropDown('user_type');" />
+  			             <select name="type" class="form-select" id="type" aria-label="Select user type" onBlur="return validateDropDown('type');" />
   				               <option selected="selected" disabled class="text-primary">Select your user type</option>
           				          <?php
                               // Source file for extracting data
@@ -296,7 +296,7 @@ include('includes/header.inc.php');
                              }
                           ?>
   	        	        </select>
-                      <label for="user_type">User Type</label>
+                      <label for="type">User Type</label>
                   </div>
               </div>
 

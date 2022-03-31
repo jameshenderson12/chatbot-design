@@ -11,6 +11,7 @@
 	$location = filter_var(TRIM($_POST['location'], FILTER_SANITIZE_STRING));
 	$password = filter_var(TRIM($_POST['password'], FILTER_SANITIZE_STRING));
 
+/*
 	if ($user_type == "Academic") {
 		$user_type_id = 1;
 	}
@@ -35,6 +36,7 @@
 	if ($user_type == "Student") {
 		$user_type_id = 8;
 	}
+	*/
 
 	include 'db_connect/db_connect.inc.php';
 
