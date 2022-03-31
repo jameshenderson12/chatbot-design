@@ -1,7 +1,7 @@
 <?php
 
 // Display or hide admin menus
-	if ($_SESSION['user_type_id'] == 9) {
+	if ($_SESSION['access_level'] == 9) {
 		// Admin user - show admin menu;
 		$style = "";
 	}
