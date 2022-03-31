@@ -11,40 +11,38 @@
 	$location = filter_var(TRIM($_POST['location'], FILTER_SANITIZE_STRING));
 	$password = filter_var(TRIM($_POST['password'], FILTER_SANITIZE_STRING));
 
-/*
 	if ($user_type == "Academic") {
-		$user_type_id = 1;
+		$access_level = 3;
 	}
 	if ($user_type == "Learner") {
-		$user_type_id = 2;
+		$access_level = 2;
 	}
 	if ($user_type == "Learning Technologist") {
-		$user_type_id = 3;
+		$access_level = 4;
 	}
 	if ($user_type == "Observer") {
-		$user_type_id = 4;
+		$access_level = 1;
 	}
 	if ($user_type == "Researcher") {
-		$user_type_id = 5;
+		$access_level = 4;
 	}
 	if ($user_type == "Software Developer") {
-		$user_type_id = 6;
+		$access_level = 4;
 	}
 	if ($user_type == "Subject Expert") {
-		$user_type_id = 7;
+		$access_level = 3;
 	}
 	if ($user_type == "Student") {
-		$user_type_id = 8;
+		$access_level = 2;
 	}
-	*/
 
 	include 'db_connect/db_connect.inc.php';
 
 	// Initial query to set intial positional values
-	$stmt1 = mysqli_prepare($con_app, "INSERT INTO user (firstname, surname, username, email, user_type_id, user_type, location, password) VALUES (?,?,?,?,?,?,?,?)");
+	$stmt1 = mysqli_prepare($con_app, "INSERT INTO user (firstname, surname, username, email, user_type, access_level, location, password) VALUES (?,?,?,?,?,?,?,?)");
 
 	// Bind the input parameters to the prepared statement
-	mysqli_stmt_bind_param($stmt1, "ssssisss", $firstname, $surname, $username, $email, $user_type_id, $user_type, $location, md5($password));
+	mysqli_stmt_bind_param($stmt1, "sssssiss", $firstname, $surname, $username, $email, $user_type, $access_level, $location, md5($password));
 
 	// Execute the query
 	mysqli_stmt_execute($stmt1);

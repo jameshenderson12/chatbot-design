@@ -280,7 +280,7 @@ include('includes/header.inc.php');
               <!-- User Type -->
               <div class="col-md">
                 <div class="form-floating">
-  			             <select name="type" class="form-select" id="type" aria-label="Select user type" onBlur="return validateDropDown('type');" />
+  			             <select name="user_type" class="form-select" id="user_type" aria-label="Select user type" onBlur="return validateDropDown('user_type');" />
   				               <option selected="selected" disabled class="text-primary">Select your user type</option>
           				          <?php
                               // Source file for extracting data
@@ -296,7 +296,7 @@ include('includes/header.inc.php');
                              }
                           ?>
   	        	        </select>
-                      <label for="type">User Type</label>
+                      <label for="user_type">User Type</label>
                   </div>
               </div>
 
