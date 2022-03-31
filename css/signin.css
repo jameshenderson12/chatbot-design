@@ -1,0 +1,21 @@
+html,
+body {
+  /*height: 100%;*/
+}
+
+body {
+  /*display: flex;
+  align-items: stretch;*/
+  background-color: #f5f5f5;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+@media (min-width: 799px) {
+  body {
+    margin-top: 60px;
+    margin-bottom: 30px;
+  }
+}
