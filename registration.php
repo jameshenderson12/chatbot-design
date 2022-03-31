@@ -29,7 +29,7 @@ include('includes/header.inc.php');
   		// Validate the first name input
   		var fn = document.forms["registrationForm"]["firstname"];
   		if (fn.value == null || fn.value == "") {
-  			alert("Please enter your first name.");
+  			//alert("Please enter your first name.");
   			fn.style.border="1px solid #C33";
   			fn.focus();
   			return false;
@@ -37,8 +37,8 @@ include('includes/header.inc.php');
   		// Validate the surname input
   		var sn = document.forms["registrationForm"]["surname"];
   		if (sn.value == null || sn.value == "") {
-  			alert("Please enter your surname.");
-  		    sn.style.border="1px solid #C33";
+  			//alert("Please enter your surname.");
+  		  sn.style.border="1px solid #C33";
   			sn.focus();
   			return false;
   		}
@@ -46,7 +46,7 @@ include('includes/header.inc.php');
       var un = document.forms["registrationForm"]["username"];
       var unmsg = document.getElementById("un-msg");
       if ((un.value == null) || (un.value == "") || ($('#un-msg').html() != "") ) {
-        alert("Please enter a unique username.");
+        //alert("Please enter a unique username.");
         un.style.border="1px solid #C33";
         un.focus();
         return false;
@@ -66,7 +66,7 @@ include('includes/header.inc.php');
   		var xd3 = document.getElementById("user_type");
   		var yd3 = document.getElementById("user_type").options;
   			if (yd3[xd3.selectedIndex].index == "0") {
-  				alert("Please specify your user type.");
+  				//alert("Please specify your user type.");
   				xd3.style.border="1px solid #C33";
   				xd3.focus();
   				return false;
@@ -75,7 +75,7 @@ include('includes/header.inc.php');
   		var xd1 = document.getElementById("location");
   		var yd1 = document.getElementById("location").options;
   			if (yd1[xd1.selectedIndex].index == "0") {
-  				alert("Please specify your location.");
+  				//alert("Please specify your location.");
   				xd1.style.border="1px solid #C33";
   				xd1.focus();
   				return false;
@@ -85,12 +85,12 @@ include('includes/header.inc.php');
       var pwd2 = document.forms["registrationForm"]["password2"];
         if(pwd1.value != "" && pwd1.value == pwd2.value) {
           if(!checkPassword(pwd1.value)) {
-          alert("The password you have entered is not valid.");
+          //alert("The password you have entered is not valid.");
           pwd1.focus();
           return false;
           }
         } else {
-          alert("Please check that you've entered and confirmed your password correctly.");
+          //alert("Please check that you've entered and confirmed your password correctly.");
           pwd1.focus();
           return false;
         }
@@ -123,9 +123,13 @@ include('includes/header.inc.php');
   		var x = document.getElementById("password");
   		if ((x.value == null) || (x.value == "") || (!checkPassword(x.value))) {
   			x.style.border="1px solid #C33";
+        $('#pass1-msg').html("Must be >= 6 mix of lower, UPPER and number.");
   			return false;
   		}
-  		else x.style.border="1px solid #090";
+  		else {
+        x.style.border="1px solid #090";
+        $('#pass1-msg').html("");
+      }
   	}
 
   	// Turn the confirm password field red if not input correct (onBlur - focus leaving the field)
@@ -134,9 +138,13 @@ include('includes/header.inc.php');
   		var y = document.getElementById("password");
   		if ((x.value == null) || (x.value == "") || (!checkPassword(x.value)) || (x.value != y.value)) {
   			x.style.border="1px solid #C33";
+        $('#pass2-msg').html("Does not match previous. Try again.");
   			return false;
   		}
-  		else x.style.border="1px solid #090";
+  		else {
+        x.style.border="1px solid #090";
+        $('#pass2-msg').html("");
+      }
   	}
 
   	// Turn the email field red if not input correct (onBlur - focus leaving the field)
@@ -282,19 +290,14 @@ include('includes/header.inc.php');
                 <div class="form-floating">
   			             <select name="user_type" class="form-select" id="user_type" aria-label="Select user type" onBlur="return validateDropDown('user_type');" />
   				               <option selected="selected" disabled class="text-primary">Select your user type</option>
-          				          <?php
-                              // Source file for extracting data
-                              $file = 'text/select-user-type.txt';
-                              $handle = @fopen($file, 'r');
-                              if ($handle) {
-                                 while (!feof($handle)) {
-                                 $line = fgets($handle, 4096);
-                                 $item = explode('\n', $line);
-                                 echo '<option value="' . $item[0] . '">' . $item[0] . '</option>' . "\n";
-                             }
-                             fclose($handle);
-                             }
-                          ?>
+          				       <option value="Academic">Academic</option>
+                         <option value="Learner">Learner</option>
+                         <option value="Learning Technologist">Learning Technologist</option>
+                         <option value="Observer">Observer</option>
+                         <option value="Researcher">Researcher</option>
+                         <option value="Software Developer">Software Developer</option>
+                         <option value="Subject Expert">Subject Expert</option>
+                         <option value="Student">Student</option>                                                                            
   	        	        </select>
                       <label for="user_type">User Type</label>
                   </div>
@@ -329,12 +332,14 @@ include('includes/header.inc.php');
                       <input name="password" id="password" class="form-control" placeholder="Create password" type="password" onBlur="return validatePassword();" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onchange="form.password2.pattern = this.value;">
                       <label for="password">Create Password</label>
                 </div>
+                <span id="pass1-msg" class="additional-info"></span>
               </div>
               <div class="col-md">
                 <div class="form-floating">
                     <input name="password2" class="form-control" id="password2" placeholder="Repeat password" type="password" onBlur="return validatePassword2();" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
                     <label for="password2">Repeat Password</label>
                 </div>
+                <span id="pass2-msg" class="additional-info"></span>
               </div>
             </div>
             <!-- Disclaimer -->
