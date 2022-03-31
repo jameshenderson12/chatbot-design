@@ -63,8 +63,8 @@ include('includes/header.inc.php');
   			return false;
   		}
       // Validate the world cup winner input
-  		var xd3 = document.getElementById("type");
-  		var yd3 = document.getElementById("type").options;
+  		var xd3 = document.getElementById("user_type");
+  		var yd3 = document.getElementById("user_type").options;
   			if (yd3[xd3.selectedIndex].index == "0") {
   				alert("Please specify your user type.");
   				xd3.style.border="1px solid #C33";
@@ -208,7 +208,7 @@ include('includes/header.inc.php');
   						$('#username').css('border', '1px #C33 solid');
   						$('#username').removeClass("correct");
   						$('#username').addClass("incorrect");
-  						$('#un-msg').html("Sorry but this username is already taken.");
+  						$('#un-msg').html("Sorry, this username is already taken.");
   					}
   					else {
   						$('#username').css('border', '1px #090 solid');
