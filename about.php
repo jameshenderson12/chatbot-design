@@ -26,7 +26,7 @@ include('includes/header.inc.php');
 		<main class="flex-shrink-0">
 		  <div class="container p-2">
 		    <h1 class="mt-4">About</h1>
-		    <p class="lead">A brief description of the application and overview of the wider project. Full project site available at <a href="https://cepeh.eu/" target="_blank">https://cepeh.eu/</a></p>
+		    <p class="lead">A brief desc of the application and overview of the wider project. Full project site available at <a href="https://cepeh.eu/" target="_blank">https://cepeh.eu/</a></p>
 
 				<?php include('includes/logos.inc.php'); ?>
 
