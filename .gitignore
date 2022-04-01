@@ -4,3 +4,6 @@ db_connect/
 
 # Ignore XML file types
 *.yml
+
+# Ignore the FTP config file
+.ftpconfig
