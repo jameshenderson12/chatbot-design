@@ -35,7 +35,7 @@ session_start();
 		$stmt = mysqli_prepare($con_app, "SELECT id, firstname, surname, username, email, user_type, access_level, password FROM user WHERE id = ?");
 		mysqli_stmt_bind_param($stmt, "d", $id);
 		mysqli_stmt_execute($stmt);
-		mysqli_stmt_bind_result($stmt, $id, $firstname, $surname, $username, $email, $user_type, $access_level $password);
+		mysqli_stmt_bind_result($stmt, $id, $firstname, $surname, $username, $email, $user_type, $access_level, $password);
 		mysqli_stmt_fetch($stmt);
 		// Assign user session variables
 		$_SESSION['id'] = $id;
