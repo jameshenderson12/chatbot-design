@@ -8,9 +8,25 @@
 	/*font-size: 12px;*/
 }
 .additional-info {
+	display: block;
 	font-size: 0.80em;
-	color: #999;
+	color: #333;
 	text-align: left !important;
+	margin-top: 0px;
+	margin-left: 10px;
+}
+.additional-info i {
+	display: inline;
+	padding: .2em .6em .3em;
+	font-size: 75%;
+	font-weight: 700;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	border-radius: .25em;
+	background-color: #d9534f;
 }
 .red {
 	color: #C33;
