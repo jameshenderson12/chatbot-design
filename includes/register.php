@@ -7,7 +7,7 @@
 	$surname = ucfirst(TRIM($_POST['surname']));
 	$username = filter_var(TRIM($_POST['username'], FILTER_SANITIZE_STRING));
 	$email = TRIM($_POST['email']);
-	$user_type = TRIM($_POST['user_type']);
+	$user_type = $_POST['user_type'];
 	$location = TRIM($_POST['location']);
 	$password = filter_var(TRIM($_POST['password'], FILTER_SANITIZE_STRING));
 
@@ -53,35 +53,24 @@
 	// Close database connection
 	mysqli_close($con_app);
 
-?>
+	include('includes/config.inc.php');
+	include('includes/header.inc.php');
 
-	<!DOCTYPE html>
-	<html lang="en">
-	  <head>
-	    <meta charset="utf-8">
-			<meta http-equiv="refresh" content="5;url=../index.php">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <meta name="description" content="">
-	    <meta name="author" content="">
-			<?php include "includes/config.inc.php" ?>
-			<title><?php echo $page_title.' - '.$config['application_name'].' - '.$config['project_acronym'].': '.$config['project_name']; ?></title>
-	    <!-- Various CSS and Font links for including -->
-	    <link rel="preconnect" href="https://fonts.gstatic.com">
-	  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&display=swap">
-	    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
-	  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <!-- Bootstrap core CSS -->
-	    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	?>
+
+	<!-- Custom styles for this template -->
+	<link href="css/sticky-footer-navbar.css" rel="stylesheet">
+
+		<?php include('includes/navbar.inc.php'); ?>
 
 	    <!-- Custom styles for this template -->
 	    <link href="../css/signin.css" rel="stylesheet">
 	    <link href="../css/registration.css" rel="stylesheet">
-	  </head>
-	  <body>
+		</head>
 
-	    <div class="container text-center">
+		<body class="d-flex flex-column h-100">
+
+		  <div class="container text-center">
 
 	      <img src="../img/CEPEH-Logo.png" alt="CEPEH project logo" width="200px" class="img-fluid center-block">
 	      <p class="lead text-center"><b>C</b>hatbots <b>E</b>nhance <b>P</b>ersonalised <b>E</b>uropean <b>H</b>ealthcare Curricula</p>
