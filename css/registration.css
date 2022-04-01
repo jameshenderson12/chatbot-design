@@ -10,6 +10,7 @@
 .additional-info {
 	font-size: 0.80em;
 	color: #999;
+	text-align: left !important;
 }
 .red {
 	color: #C33;
