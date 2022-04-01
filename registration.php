@@ -25,11 +25,12 @@ include('includes/header.inc.php');
   		$(this).addClass("correct");
   	}
 
+
   	function validateFullForm() {
   		// Validate the first name input
   		var fn = document.forms["registrationForm"]["firstname"];
   		if (fn.value == null || fn.value == "") {
-  			//alert("Please enter your first name.");
+  			$('#fn-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter your first name.");
   			fn.style.border="1px solid #C33";
   			fn.focus();
   			return false;
@@ -37,7 +38,7 @@ include('includes/header.inc.php');
   		// Validate the surname input
   		var sn = document.forms["registrationForm"]["surname"];
   		if (sn.value == null || sn.value == "") {
-  			//alert("Please enter your surname.");
+  			$('#sn-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter your last name.");
   		  sn.style.border="1px solid #C33";
   			sn.focus();
   			return false;
@@ -46,7 +47,7 @@ include('includes/header.inc.php');
       var un = document.forms["registrationForm"]["username"];
       var unmsg = document.getElementById("un-msg");
       if ((un.value == null) || (un.value == "") || ($('#un-msg').html() != "") ) {
-        //alert("Please enter a unique username.");
+        $('#un-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter a username.");
         un.style.border="1px solid #C33";
         un.focus();
         return false;
@@ -57,8 +58,8 @@ include('includes/header.inc.php');
   		var atpos = x.indexOf("@");
   		var dotpos = x.lastIndexOf(".");
   		if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
-  			alert("Please enter a valid email address.");
-  		    y.style.border="1px solid #C33";
+  			$('#em-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter a valid email address.");
+  		  y.style.border="1px solid #C33";
   			y.focus();
   			return false;
   		}
@@ -66,7 +67,7 @@ include('includes/header.inc.php');
   		var xd3 = document.getElementById("user_type");
   		var yd3 = document.getElementById("user_type").options;
   			if (yd3[xd3.selectedIndex].index == "0") {
-  				//alert("Please specify your user type.");
+  				$('#ut-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please specify your role.");
   				xd3.style.border="1px solid #C33";
   				xd3.focus();
   				return false;
@@ -75,7 +76,7 @@ include('includes/header.inc.php');
   		var xd1 = document.getElementById("location");
   		var yd1 = document.getElementById("location").options;
   			if (yd1[xd1.selectedIndex].index == "0") {
-  				//alert("Please specify your location.");
+  				$('#lo-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please specify your location.");
   				xd1.style.border="1px solid #C33";
   				xd1.focus();
   				return false;
@@ -85,12 +86,12 @@ include('includes/header.inc.php');
       var pwd2 = document.forms["registrationForm"]["password2"];
         if(pwd1.value != "" && pwd1.value == pwd2.value) {
           if(!checkPassword(pwd1.value)) {
-          //alert("The password you have entered is not valid.");
+          $('#pass1-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Must be >= 6 mix of lower, UPPER and number.");
           pwd1.focus();
           return false;
           }
         } else {
-          //alert("Please check that you've entered and confirmed your password correctly.");
+          $('#pass1-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Must be >= 6 mix of lower, UPPER and number.");
           pwd1.focus();
           return false;
         }
@@ -98,19 +99,53 @@ include('includes/header.inc.php');
   		// Validate the disclaimer checkbox input
   		var dc = document.forms["registrationForm"]["disclaimer"];
   		if (!dc.checked) {
-  			alert("You must agree to the terms and conditions.");
+  			$('#dc-msg').html("<<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> You must agree to the site privacy terms.");
   			dc.focus();
   			return false;
   		}
+      else {
+        $('#dc-msg').html("");
+      }
   	}
+
   	// Turn the name fields red if not input (onBlur - focus leaving the field)
-  	function validateName(nameID) {
-  		var x = document.getElementById(nameID);
+  	function validateFirstName() {
+  		var x = document.getElementById("firstname");
   		if (x.value == null || x.value == "") {
-  			x.style.border="1px solid #C33";
+        $('#fn-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter your first name.");
+        x.style.border="1px solid #C33";
   			return false;
   		}
-  		else x.style.border="1px solid #090";
+  		else {
+        x.style.border = "1px solid #090";
+        $('#fn-msg').html("");
+      }
+    }
+
+    function validateLastName() {
+  		var x = document.getElementById("surname");
+  		if (x.value == null || x.value == "") {
+        $('#sn-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter your last name.");
+        x.style.border="1px solid #C33";
+  			return false;
+  		}
+  		else {
+        x.style.border = "1px solid #090";
+        $('#sn-msg').html("");
+      }
+  	}
+
+    function validateUsername() {
+  		var x = document.getElementById("username");
+  		if (x.value == null || x.value == "") {
+        $('#un-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter a username.");
+        x.style.border="1px solid #C33";
+  			return false;
+  		}
+  		else {
+        x.style.border = "1px solid #090";
+        $('#sn-msg').html("");
+      }
   	}
 
   	function checkPassword(str) {
@@ -123,7 +158,7 @@ include('includes/header.inc.php');
   		var x = document.getElementById("password");
   		if ((x.value == null) || (x.value == "") || (!checkPassword(x.value))) {
   			x.style.border="1px solid #C33";
-        $('#pass1-msg').html("Must be >= 6 mix of lower, UPPER and number.");
+        $('#pass1-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Must be >= 6 mix of lower, UPPER and number.");
   			return false;
   		}
   		else {
@@ -138,7 +173,7 @@ include('includes/header.inc.php');
   		var y = document.getElementById("password");
   		if ((x.value == null) || (x.value == "") || (!checkPassword(x.value)) || (x.value != y.value)) {
   			x.style.border="1px solid #C33";
-        $('#pass2-msg').html("Does not match previous. Try again.");
+        $('#pass2-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Does not match previous. Try again.");
   			return false;
   		}
   		else {
@@ -154,21 +189,24 @@ include('includes/header.inc.php');
   		var atpos = x.indexOf("@");
   		var dotpos = x.lastIndexOf(".");
   		if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+        $('#em-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please enter a valid email address.");
   			y.style.border="1px solid #C33";
   			return false;
   		}
   		else
   		{
   			y.style.border="1px solid #090";
+        $('#em-msg').html("");
   		}
   	}
 
   	// Turn the dropdown fields red if no selection made (onBlur - focus leaving the field)
-  	function validateDropDown(dropDownID) {
-  		var x = document.getElementById(dropDownID);
-  		var y = document.getElementById(dropDownID).options;
+  	function validateUserType() {
+  		var x = document.getElementById("user_type");
+  		var y = document.getElementById("user_type").options;
 
-  		if (y[x.selectedIndex].index = 0) {
+  		if (y[x.selectedIndex].index == 0) {
+        $('#ut-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please specify your role.");
   			x.style.border="1px solid #C33";
   			return false;
   		}
@@ -180,12 +218,42 @@ include('includes/header.inc.php');
   		}
   	}
 
+    function validateLocation() {
+  		var x = document.getElementById("location");
+  		var y = document.getElementById("location").options;
+
+  		if (y[x.selectedIndex].index == 0) {
+        $('#lo-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Please specify your location.");
+  			x.style.border="1px solid #C33";
+  			return false;
+  		}
+  		else if (x.selectedIndex > 0) {
+  			x.style.border="1px solid #090";
+  		}
+  		else {
+  			x.style.border="1px solid #C33";
+  		}
+  	}
+
+    function validateDisclaimer() {
+      var dc = document.getElementById("disclaimer");
+      if (!dc.checked) {
+        $('#dc-msg').html("You must agree to the site privacy terms.");
+        dc.focus();
+        return false;
+      }
+      else {
+        $('#dc-msg').html("");
+      }
+    }
+
   	// Reset all guidance borders to original colour
   	function resetBorders() {
   		var x = document.getElementById("registrationForm");
   		$("button").removeClass("highlight");
   		for (var i = 0; i < x.length; i++) {
   			x.elements[i].style.border="1px solid #CCC";
+        $(".additional-info").html("");
   		}
   	}
   	</script>
@@ -258,37 +326,40 @@ include('includes/header.inc.php');
           <div class="row mb-3">
             <div class="col-md">
             	<div class="form-floating">
-                  <input name="firstname" id="firstname" class="form-control" placeholder="First name" type="text" onBlur="return validateName('firstname');" required>
+                  <input name="firstname" id="firstname" class="form-control" placeholder="First name" type="text" onBlur="return validateFirstName();">
                   <label for="firstname">First name</label>
               </div>
+              <span id="fn-msg" class="additional-info"></span>
             </div>
             <div class="col-md">
               <div class="form-floating">
-                  <input name="surname" id="surname" class="form-control" placeholder="Last name" type="text" onBlur="return validateName('surname');" required>
+                  <input name="surname" id="surname" class="form-control" placeholder="Last name" type="text" onBlur="return validateLastName();">
                   <label for="surname">Last name</label>
               </div>
+              <span id="sn-msg" class="additional-info"></span>
             </div>
           </div>
             <div class="row mb-3">
               <div class="col-md">
                 <div class="form-floating">
-                    <input name="username" id="username" class="form-control" placeholder="Username" type="text">
+                    <input name="username" id="username" class="form-control" placeholder="Username" type="text" onBlur="return validateUsername();">
                     <label for="username">Username</label>
                 </div>
                 <span id="un-msg" class="additional-info"></span>
               </div>
               <div class="col-md">
                 <div class="form-floating">
-                    <input name="email" id="email" class="form-control" placeholder="Email address" type="email" onBlur="return validateEmail();" required>
+                    <input name="email" id="email" class="form-control" placeholder="Email address" type="email" onBlur="return validateEmail();">
                     <label for="email">Email</label>
                 </div>
+                <span id="em-msg" class="additional-info"></span>
               </div>
             </div>
             <div class="row mb-3">
               <!-- User Type -->
               <div class="col-md">
                 <div class="form-floating">
-  			             <select name="user_type" class="form-select" id="user_type" aria-label="Select user type" onBlur="return validateDropDown('user_type');" />
+  			             <select name="user_type" class="form-select" id="user_type" aria-label="Select user type" onBlur="return validateUserType();" />
   				               <option selected="selected" disabled class="text-primary">Select your user type</option>
           				       <option value="Academic">Academic</option>
                          <option value="Learner">Learner</option>
@@ -297,16 +368,17 @@ include('includes/header.inc.php');
                          <option value="Researcher">Researcher</option>
                          <option value="Software Developer">Software Developer</option>
                          <option value="Subject Expert">Subject Expert</option>
-                         <option value="Student">Student</option>                                                                            
+                         <option value="Student">Student</option>
   	        	        </select>
                       <label for="user_type">User Type</label>
                   </div>
+                  <span id="ut-msg" class="additional-info"></span>
               </div>
 
               <!-- Location -->
               <div class="col-md">
                 <div class="form-floating">
-  			             <select name="location" class="form-select" id="location" aria-label="Select location" onBlur="return validateDropDown('location');" />
+  			             <select name="location" class="form-select" id="location" aria-label="Select location" onBlur="return validateLocation();" />
   				               <option selected="selected" disabled class="text-primary">Select your location</option>
           				          <?php
                               // Source file for extracting data
@@ -324,19 +396,20 @@ include('includes/header.inc.php');
   	        	        </select>
                       <label for="location">Location</label>
                   </div>
+                  <span id="lo-msg" class="additional-info"></span>
               </div>
             </div>
             <div class="row mb-3">
               <div class="col-md">
                 <div class="form-floating">
-                      <input name="password" id="password" class="form-control" placeholder="Create password" type="password" onBlur="return validatePassword();" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onchange="form.password2.pattern = this.value;">
+                      <input name="password" id="password" class="form-control" placeholder="Create password" type="password" onBlur="return validatePassword();" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onchange="form.password2.pattern = this.value;">
                       <label for="password">Create Password</label>
                 </div>
                 <span id="pass1-msg" class="additional-info"></span>
               </div>
               <div class="col-md">
                 <div class="form-floating">
-                    <input name="password2" class="form-control" id="password2" placeholder="Repeat password" type="password" onBlur="return validatePassword2();" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+                    <input name="password2" class="form-control" id="password2" placeholder="Repeat password" type="password" onBlur="return validatePassword2();" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
                     <label for="password2">Repeat Password</label>
                 </div>
                 <span id="pass2-msg" class="additional-info"></span>
@@ -349,6 +422,7 @@ include('includes/header.inc.php');
                 By registering an account, I acknowledge and accept the <!--<a href="" data-toggle="modal" data-target="#HHterms">terms and conditions</a>--> associated <a href="https://www.nottingham.ac.uk/utilities/privacy/privacy.aspx" target="_blank">Privacy Policy</a> terms.
               </label>
             </div>
+            <span id="dc-msg" class="additional-info"></span>
            <div class="row m-4">
                 <button type="submit" class="col me-2 btn btn-lg btn-primary">Create Account</button>
                 <button type="reset" class="col me-2 btn btn-lg btn-outline-secondary" onClick="resetBorders();">Reset All</button>
