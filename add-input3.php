@@ -21,7 +21,7 @@ $keyword = $_SESSION['keyword'];
 $chatbot_id = $_GET['cid'];
 $added_by = $_SESSION['firstname'] . " " . $_SESSION['surname'];
 
-debug_to_console($_SESSION['keyword']);
+consoleMsg($_SESSION['keyword']);
 
 foreach($_POST['responseType'] as $response) {
   $type .= "$response, ";
@@ -69,7 +69,7 @@ $responseExample_16, $responseExample_17, $responseExample_18, $responseExample_
 // Attempt to execute the prepared statement
 if ( (mysqli_stmt_execute($stmt1)) && (mysqli_stmt_execute($stmt2)) ) {
 		//echo "<div class='alert alert-success'>Success: Database updated with your examples</div>";
-		debug_to_console("Successfully added intent and response to DB");
+		consoleMsg("Successfully added intent and response to DB");
 		//echo "<div class='alert alert-success'>Successfully added detail to database...</div>";
 
 		// Set last_updated_by to current session firstname/surname
@@ -81,8 +81,8 @@ if ( (mysqli_stmt_execute($stmt1)) && (mysqli_stmt_execute($stmt2)) ) {
 		mysqli_query($con_app, $sql_update_contributions);
 }
 else {
-		//debug_to_console("Failed to add intent to DB");
-		//writeMsg(mysqli_error($con_app));
+		//consoleMsg("Failed to add intent to DB");
+		//alertMsg(mysqli_error($con_app));
 		printf("<div class='alert alert-warning'>Sorry, there has been an error inserting your INTENT and RESPONSE values: %s\n</div>", mysqli_error($con_app));
 }
 

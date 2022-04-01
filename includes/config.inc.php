@@ -41,15 +41,15 @@ $config['admin_tel'] = '0115 823 0800';
 */
 
 // A simple function to output an alert style message
-function writeMsg($msg) {
-	echo "<script type='text/javascript'>alert('$msg');</script>";
+function alertMsg($msg) {
+	echo "<script type='text/javascript'>alert('Alert message: " . $msg . "');</script>";
 }
 
-function debug_to_console($data) {
+function consoleMsg($data) {
     $output = $data;
     if (is_array($output))
         $output = implode(',', $output);
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+    echo "<script>console.log('Debug message: " . $output . "');</script>";
 }
 
 

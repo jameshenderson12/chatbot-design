@@ -78,7 +78,7 @@ table {
 
 						for ($x = 1; $x <= 30; $x++) {
 							$example_x = "intentExample_$x";
-							//debug_to_console($example_x);
+							//consoleMsg($example_x);
 							if (isset($_SESSION[$example_x])) {
 								$example_x = $_SESSION[$example_x];
 								$examples .= "'$example_x', ";
