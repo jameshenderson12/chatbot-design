@@ -143,8 +143,8 @@ include('includes/header.inc.php');
   			return false;
   		}
   		else {
-        x.style.border = "1px solid #090";
-        $('#sn-msg').html("");
+        //x.style.border = "1px solid #090";
+        //$('#sn-msg').html("");
       }
   	}
 
@@ -173,7 +173,7 @@ include('includes/header.inc.php');
   		var y = document.getElementById("password");
   		if ((x.value == null) || (x.value == "") || (!checkPassword(x.value)) || (x.value != y.value)) {
   			x.style.border="1px solid #C33";
-        $('#pass2-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Does not match previous. Try again.");
+        $('#pass2-msg').html("<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Passwords do not match. Try again.");
   			return false;
   		}
   		else {

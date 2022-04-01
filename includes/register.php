@@ -1,6 +1,6 @@
 <?php
 
-	//$page_title = 'Registration';
+	$page_title = 'Registration';
 
 	// Sanitize incoming username and password
 	$firstname = ucfirst(TRIM($_POST['firstname']));
@@ -39,7 +39,6 @@
 	include('config.inc.php');
 	consoleMsg($firstname . ", " . $surname . ", " . $username . ", " .  $email . ", " .  $user_type . ", " . $access_level . ", " . $location . ", " . $password . ".");
 	// Debug message: Scooby, Doo, scoobydoo, james.henderson@nottingham.ac.uk, Software Developer, 4, Angola, 56789Test.
-
 
 	include 'db_connect/db_connect.inc.php';
 
@@ -108,7 +107,8 @@
 	     <div class="my-5 text-muted">Copyright © 2021 CEPEH Project</div>
 
      </div><!--.container-->
-		 <?php include('footer.inc.php'); ?>
+
+		 <?php include('logos.inc.php'); ?>
 
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		 <script>
