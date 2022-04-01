@@ -212,6 +212,7 @@ include('includes/header.inc.php');
   		}
   		else if (x.selectedIndex > 0) {
   			x.style.border="1px solid #090";
+        $('#ut-msg').html("");
   		}
   		else {
   			x.style.border="1px solid #C33";
@@ -229,6 +230,7 @@ include('includes/header.inc.php');
   		}
   		else if (x.selectedIndex > 0) {
   			x.style.border="1px solid #090";
+        $('#lo-msg').html("");
   		}
   		else {
   			x.style.border="1px solid #C33";
@@ -322,7 +324,7 @@ include('includes/header.inc.php');
       <div class="card bg-light">
       <article class="card-body mx-auto">
       	<h1 class="h3 mb-3 mt-3 fw-normal">Register</h1>
-      	<form id="registrationForm" name="registrationForm" method="post" action="includes/register.php" onSubmit="return validateFullForm()">
+      	<form id="registrationForm" name="registrationForm" method="post" action="includes/register.php"> <!-- onSubmit="return validateFullForm()"-->
           <div class="row mb-3">
             <div class="col-md">
             	<div class="form-floating">

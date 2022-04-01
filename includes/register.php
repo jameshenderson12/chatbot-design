@@ -1,17 +1,16 @@
 <?php
 
-	$page_title = 'Registration';
-	include('config.inc.php');
+	//$page_title = 'Registration';
 
 	// Sanitize incoming username and password
 	$firstname = ucfirst(TRIM($_POST['firstname']));
 	$surname = ucfirst(TRIM($_POST['surname']));
-	$username = filter_var(TRIM($_POST['username'], FILTER_SANITIZE_STRING));
+	$username = filter_var(TRIM($_POST['username']), FILTER_SANITIZE_STRING);
 	$email = TRIM($_POST['email']);
 	$user_type = $_POST['user_type'];
 	$location = TRIM($_POST['location']);
-	$password = filter_var(TRIM($_POST['password'], FILTER_SANITIZE_STRING));
-/*
+	$password = filter_var(TRIM($_POST['password']), FILTER_SANITIZE_STRING);
+
 	if ($user_type == "Academic") {
 		$access_level = 3;
 	}
@@ -37,8 +36,11 @@
 		$access_level = 2;
 	}
 
-	consoleMsg($access_level);
-*/
+	include('config.inc.php');
+	consoleMsg($firstname . ", " . $surname . ", " . $username . ", " .  $email . ", " .  $user_type . ", " . $access_level . ", " . $location . ", " . $password . ".");
+	// Debug message: Scooby, Doo, scoobydoo, james.henderson@nottingham.ac.uk, Software Developer, 4, Angola, 56789Test.
+
+
 	include 'db_connect/db_connect.inc.php';
 
 	// Initial query to set intial positional values
@@ -55,6 +57,7 @@
 
 	// Close database connection
 	mysqli_close($con_app);
+
 	?>
 
 
@@ -92,7 +95,7 @@
 
 					<p>Thank you for joining the Educational Chatbot Crowdbased Co-Creation Tool.</p>
 					<p><i class="fa fa-thumbs-o-up fa-5x" aria-hidden="true"></i><p>
-		      <p>You will now be taken back to the login page in <span id="counter"></span> seconds.</p>
+		      <p>You will now be taken back to the login page in <span id="counter">5</span> seconds.</p>
 		      <p>If you are not redirected automatically, please <a href='../index.php'>click here</a>.</p>
 
 		      <div class="spinner"></div>
@@ -116,7 +119,7 @@
 					if (count <= 0) {
 							window.location.replace("../index.php");
 					}
-			}, 5000);
+			}, 1000);
 		 </script>
 
 	  </body>
