@@ -1,7 +1,7 @@
 <?php
 
 // Display or hide admin menus
-	if ($_SESSION['access_level'] == 9) {
+	if ($_SESSION['access_level'] == 5) {
 		// Admin user - show admin menu;
 		$style = "";
 	}
@@ -82,7 +82,7 @@
         </li>-->
       </ul>
 
-				<div class="bg-dark text-light m-2"><?php printf("%s %s (%s)", $_SESSION["firstname"], $_SESSION["surname"], ($_SESSION["username"])) ?></div>
+				<div class="bg-dark text-light m-2"><?php printf("%s %s (%s)", $_SESSION["firstname"], $_SESSION["surname"], $_SESSION["username"]) ?></div>
 				<a href="includes/logout.inc.php" class="btn btn-outline-light btn-sm"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
 			</div>
 

@@ -32,10 +32,10 @@ session_start();
 		mysqli_stmt_free_result($stmt);
 
 		// Retrieve the corresponding login information into session variables
-		$stmt = mysqli_prepare($con_app, "SELECT id, firstname, surname, username, email, user_type_id, password FROM user WHERE id = ?");
+		$stmt = mysqli_prepare($con_app, "SELECT id, firstname, surname, username, email, user_type, access_level, password FROM user WHERE id = ?");
 		mysqli_stmt_bind_param($stmt, "d", $id);
 		mysqli_stmt_execute($stmt);
-		mysqli_stmt_bind_result($stmt, $id, $firstname, $surname, $username, $email, $user_type_id, $password);
+		mysqli_stmt_bind_result($stmt, $id, $firstname, $surname, $username, $email, $user_type, $access_level $password);
 		mysqli_stmt_fetch($stmt);
 		// Assign user session variables
 		$_SESSION['id'] = $id;
@@ -43,7 +43,8 @@ session_start();
 		$_SESSION['surname'] = $surname;
 		$_SESSION['username'] = $username;
 		$_SESSION['email'] = $email;
-		$_SESSION['user_type_id'] = $user_type_id;
+		$_SESSION['user_type'] = $user_type;
+		$_SESSION['access_level'] = $access_level;
 		$_SESSION['password'] = $password;
 		$_SESSION['login'] = "1";
 
