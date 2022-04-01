@@ -53,15 +53,15 @@
 	// Close database connection
 	mysqli_close($con_app);
 
-	include('includes/config.inc.php');
-	include('includes/header.inc.php');
+	include('config.inc.php');
+	include('header.inc.php');
 
 	?>
 
 	<!-- Custom styles for this template -->
-	<link href="css/sticky-footer-navbar.css" rel="stylesheet">
+	<link href="../css/sticky-footer-navbar.css" rel="stylesheet">
 
-		<?php include('includes/navbar.inc.php'); ?>
+		<?php include('navbar.inc.php'); ?>
 
 	    <!-- Custom styles for this template -->
 	    <link href="../css/signin.css" rel="stylesheet">
