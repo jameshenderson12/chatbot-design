@@ -57,7 +57,55 @@
 	// Close database connection
 	mysqli_close($con_app);
 
-	?>
+function confirmationEmail() {
+
+	$to =  $email; // "somebody@example.com, somebodyelse@example.com";
+	$subject = "Successful registration for Chatbot Co-Creation Tool";
+
+	$message = "
+	<html>
+	<head>
+	<title>Educational Chatbot Crowd-based Co-creation Tool</title>
+	</head>
+	<body>
+	<h1>Successful Registration</h1>
+	<p>Thank you for registering to use the Chatbot Co-Creation Tool. This will enable you to provide a specific chatbot with data and information to help inform its design and implementation.</p>
+	<p>For your records, please see below for your credentials to access this site.</p>
+	<p><a href='https://www.nottingham.ac.uk/~ntzjh/cepeh/chatbot-design/index.php'>https://www.nottingham.ac.uk/~ntzjh/cepeh/chatbot-design/index.php</a></p>
+	<table>
+	<tr>
+	<th>Firstname</th>
+	<th>Lastname</th>
+	<th>Username</th>
+	<th>Password</th>
+	<th>User Role</th>
+	<th>Location</th>
+	</tr>
+	<tr>
+	<td>$firstname</td>
+	<td>$surname</td>
+	<td>$username</td>
+	<td>Stored securely</td>
+	<td>$user_type</td>
+	<td>$location</td>
+	</tr>
+	</table>
+	</body>
+	</html>
+	";
+
+	// Always set content-type when sending HTML email
+	$headers = "MIME-Version: 1.0" . "\r\n";
+	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+	// More headers
+	$headers .= 'From: <james.henderson@nottingham.ac.uk>' . "\r\n";
+	//$headers .= 'Cc: myboss@example.com' . "\r\n";
+
+	mail($to,$subject,$message,$headers);
+}
+
+?>
 
 
 	<!DOCTYPE html>
