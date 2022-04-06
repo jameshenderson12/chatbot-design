@@ -62,7 +62,7 @@ table {
 						$result = mysqli_query($con_app, $sql_get_chatbot);
 
 						while($row = mysqli_fetch_array($result)){
-								$name = $row['name'];
+								$name = $_SESSION['chatbot_name'] = $row['name'];
 								$topic = $row['topic'];
 								$author = $row['author'];
 								$last_updated_by = $row['last_updated_by'];
@@ -238,14 +238,11 @@ table {
 						</div><!--.row-->
 						<div class="row mb-5">
 							<div class="col-md-6">
-							  <label for="" class="form-label"><strong>5. Any other notes or comments?</strong></label>
-							  <textarea class="form-control" id="" placeholder="" rows="2"></textarea>
+							  <label for="notes" class="form-label"><strong>5. Any other notes or comments?</strong></label>
+							  <textarea class="form-control" id="notes" name="notes" placeholder="" rows="2"></textarea>
 								<!--<div id="emailHelp" class="form-text small">Separate listed words with a comma.</div>-->
 							</div>
 							<div class="col-md-5 bg-light">
-								<p class="p-0 m-0">
-									<em></em>
-								</p>
 							</div>
 						</div><!--.row-->
 						<div class="row mb-5">
@@ -262,7 +259,7 @@ table {
 	</div>
 
 	<?php include('includes/footer.inc.php'); ?>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	<script type="text/javascript">
 	$(document).ready(function(){
 			var maxField = 50; // Input fields increment limitation
@@ -301,9 +298,9 @@ table {
 	});
 
 	function validateForm() {
-		let x = document.forms["responseForm"]["responseExample_1"].value;
+		let y = document.forms["responseForm"]["responseExample_1"].value;
 		//let y = document.forms["responseForm"]["intent"].value;
-		if ( (x == "") && ($('#validationMsg').length == 0) ) {
+		if ( (y == "") && ($('#validationMsg').length == 0) ) {
 			$('#formContainer').append("<div id='validationMsg' class='alert alert-warning'>Please provide the required input before continuing.</div>");
 			return false;
 		}

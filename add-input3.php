@@ -21,7 +21,7 @@ $keyword = $_SESSION['keyword'];
 $chatbot_id = $_GET['cid'];
 $added_by = $_SESSION['firstname'] . " " . $_SESSION['surname'];
 
-consoleMsg($_SESSION['keyword']);
+//consoleMsg($_SESSION['keyword']);
 
 foreach($_POST['responseType'] as $response) {
   $type .= "$response, ";
@@ -34,6 +34,7 @@ $responseExample_11 = $_POST['responseExample_11']; $responseExample_12 = $_POST
 $responseExample_16 = $_POST['responseExample_16']; $responseExample_17 = $_POST['responseExample_17']; $responseExample_18 = $_POST['responseExample_18'];	$responseExample_19 = $_POST['responseExample_19'];	$responseExample_20 = $_POST['responseExample_20'];
 $responseExample_21 = $_POST['responseExample_21']; $responseExample_22 = $_POST['responseExample_22']; $responseExample_23 = $_POST['responseExample_23'];	$responseExample_24 = $_POST['responseExample_24'];	$responseExample_25 = $_POST['responseExample_25'];
 $responseExample_26 = $_POST['responseExample_26']; $responseExample_27 = $_POST['responseExample_27']; $responseExample_28 = $_POST['responseExample_28'];	$responseExample_29 = $_POST['responseExample_29'];	$responseExample_30 = $_POST['responseExample_30'];
+
 $notes = $_POST['notes'];
 
 $sql_insert_intent = "
@@ -57,7 +58,7 @@ $intentExample_16, $intentExample_17, $intentExample_18, $intentExample_19, $int
 
 
 // STMT1 needs to be executed in order to get the auto-generated ID which can be passed to the $intent_id value
-// ANOTHER IDEA is to do an INNER_JOIN on both ID fields of intent and response tables to keep linked
+// ANOTHER idea is to do an INNER_JOIN on both ID fields of intent and response tables to keep linked
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -69,7 +70,7 @@ $responseExample_16, $responseExample_17, $responseExample_18, $responseExample_
 // Attempt to execute the prepared statement
 if ( (mysqli_stmt_execute($stmt1)) && (mysqli_stmt_execute($stmt2)) ) {
 		//echo "<div class='alert alert-success'>Success: Database updated with your examples</div>";
-		consoleMsg("Successfully added intent and response to DB");
+		//consoleMsg("Successfully added intent and response to DB");
 		//echo "<div class='alert alert-success'>Successfully added detail to database...</div>";
 
 		// Set last_updated_by to current session firstname/surname
@@ -121,8 +122,8 @@ mysqli_close($con_app);
 					<div class="p-5 mb-4 bg-light rounded-3">
 						<div class="container-fluid py-5">
 					  	<h1 class="display-5 fw-bold">Thank you, <?php echo $_SESSION['firstname']; ?>.</h1>
-					    <p class="col-md-8 fs-4">We would like to say a huge thank you to acknowledge your contribution in providing some conversation detail for <?php echo $name ?>.</p>
-					    <a href="add-input1.php?cid=<?= $chatbot_id ?>" class="btn btn-primary btn-lg" type="button">Add more detail to the same chatbot</a>
+					    <p class="col-md-8 fs-4">We would like to say a huge thank you to acknowledge your contribution in providing some conversation detail for <?php echo $_SESSION['chatbot_name']; ?>.</p>
+					    <a href="add-input1.php?cid=<?php echo $chatbot_id; ?>" class="btn btn-primary btn-lg" type="button">Add more detail to the same chatbot</a>
 							<a href="home.php" class="btn btn-primary btn-lg" type="button">Add detail for another chatbot</a>
 							<p class="mt-5">If you are able to provide another XX contributions, you will be able to receive a certificate for your records.</p>
 							<button class="btn btn-primary btn-lg disabled" type="button">Receive my certificate</button>
@@ -131,9 +132,7 @@ mysqli_close($con_app);
 
 				</div><!--.container-->
 
-
 	<?php include('includes/footer.inc.php'); ?>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	</body>
 </html>
