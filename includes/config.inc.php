@@ -20,7 +20,7 @@ $config['school_name'] = 'School of Health Sciences';
 $config['project_acronym'] = 'CEPEH';
 $config['project_name'] = 'Chatbots Enhance Personalised European Healthcare Curricula';
 $config['application_name'] = 'Educational Chatbot Design Tool';
-$config['application_version'] = '0.3.10';
+$config['application_version'] = '0.4.0';
 $config['last_update'] = '17th Feb 2022';
 $config['base_url'] = $config['protocol'].'www.nottingham.ac.uk/~ntzjh/cepeh/chatbot-design';
 $config['base_dir'] = '/home/iraklis/Public/Rasa/';
@@ -34,11 +34,6 @@ $config['admin_user'] = array(
 	array("Stathis", "Konstantinidis"),
 	array("Matthew", "Pears")
 	);
-
-/*
-$config['admin_email'] = 'Ketan.Mehta1@nottingham.ac.uk';
-$config['admin_tel'] = '0115 823 0800';
-*/
 
 // A simple function to output an alert style message
 function alertMsg($msg) {
