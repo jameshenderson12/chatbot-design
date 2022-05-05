@@ -68,14 +68,10 @@
 						<i class="fa fa-cubes" aria-hidden="true"></i> Administration
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
-			<li><h6 class="dropdown-header">General</h6></li>
-            
-			<li class="<?= ($active_page == 'overview') ? 'active':''; ?>"><a class="dropdown-item" href="overview.php"><i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a></li>
-
-			// Export Data menu item
-			<li class="<?= ($active_page == 'export') ? 'active':''; ?>"><a class="dropdown-item" href="export.php"><i class="fa fa-database" aria-hidden="true"></i> Export data</a></li>
-
-			<li><a class="dropdown-item" href="#">Another action</a></li>
+						<li><h6 class="dropdown-header">General</h6></li>
+						<li class="<?= ($active_page == 'overview') ? 'active':''; ?>"><a class="dropdown-item" href="overview.php"><i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a></li>
+						<li class="<?= ($active_page == 'export') ? 'active':''; ?>"><a class="dropdown-item" href="export.php"><i class="fa fa-database" aria-hidden="true"></i> Export data</a></li>
+						<li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
 						<li class="dropdown-header">Reports</li>
             <li><a class="dropdown-item" href="report-users.php"><i class="fa fa-users" aria-hidden="true"></i> Users</a></li>

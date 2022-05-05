@@ -56,7 +56,7 @@ include('includes/header.inc.php');
       </div>
       <div class="col-md-5">
         <div class="h-100 p-5 bg-light border border-secondary rounded-3">
-          <h2>Latest updated chatbots</h2>
+          <h2>Recently updated chatbots</h2>
 					<p>A list of the latest 3 chatbots which have been updated.</p>
 					<?php
 							include('includes/db_connect/db_connect.inc.php');
