@@ -41,28 +41,28 @@ include('includes/header.inc.php');
 
 		<?php include('includes/footer.inc.php'); ?>
 
+		<script type="text/javascript">
+			$(document).ready(function(){
+					var export_button = $('#export');
+			    $(export_button).click(function() {
+			      jQuery.ajax({
+							 type: "POST",
+							 url: "includes/export.inc.php",
+							 cache: false,
+							 success: function(response){
+									if(response == true) {
+			            	$('#exportMsg').addClass("alert alert-success");
+										$('#exportMsg').html("Exporting data succesful!");
+									}
+			            else {
+			              $('#exportMsg').addClass("alert alert-danger");
+										$('#exportMsg').html("Oh, no! Something went wrong.");
+									}
+							 }
+						});
+			    });
+			});
+		</script>
+
   </body>
 </html>
-<script type="text/javascript">
-			$(document).ready(function(){
-              var export_button = $('#export'); 
-              $(export_button).click(function() {
-                jQuery.ajax({
-						 type: "POST",
-						 url: "includes/export.inc.php",
-						 cache: false,
-						 success: function(response){
-							if(response == true) {
-                                $('#exportMsg').addClass("alert alert-success");
-								$('#exportMsg').html("Exporting data succesful!");
-							}
-                            else {
-                                $('#exportMsg').addClass("alert alert-danger");
-								$('#exportMsg').html("Oh, no! Something went wrong.");
-							}
-						}
-					});
-              }); 
-             
-            });
-</script>
