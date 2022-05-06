@@ -25,7 +25,7 @@ include('includes/header.inc.php');
 
 			<h1 class="mt-4">Export data</h1>
 			<p class="lead">Exporting the data to Rasa config files.</p>
-      <p>You can find these files in the <?php echo $config['base_dir']; ?> directory.</p>
+      <p>You can find these files in the <strong><?php echo $config['base_dir']; ?></strong> directory.</p>
 
 			<div class="row">
                 <div class="col-6"><button id="export" class='btn btn-primary col-md-3' type="submit" name="submit"><i class="fa fa-database" aria-hidden="true"></i> Export</button>
