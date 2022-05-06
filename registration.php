@@ -2,7 +2,7 @@
 
 $page_title = 'Registration';
 
-session_start();
+//session_start();
 // Include session Check
 //include "includes/check_login.inc.php";
 //print_r($_SESSION);
@@ -24,7 +24,6 @@ include('includes/header.inc.php');
   	function flagCorrect() {
   		$(this).addClass("correct");
   	}
-
 
   	function validateFullForm() {
   		// Validate the first name input
