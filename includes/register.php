@@ -40,6 +40,69 @@
 	consoleMsg($firstname . ", " . $surname . ", " . $username . ", " .  $email . ", " .  $user_type . ", " . $access_level . ", " . $location . ", " . $password . ".");
 	// Debug message: Scooby, Doo, scoobydoo, james.henderson@nottingham.ac.uk, Software Developer, 4, Angola, 56789Test.
 
+	// Pass credentials to HTML email for mailing
+	$to =  $email;
+	$subject = "Successful registration for Chatbot Co-Creation Tool";
+	$from = 'james.henderson@nottingham.ac.uk';
+	$message = "
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<img src='https://www.nottingham.ac.uk/~ntzjh/cepeh/chatbot-design/img/CEPEH-Logo.png' alt='CEPEH logo' width='150px'>
+	<title>Educational Chatbot Crowd-based Co-creation Tool</title>
+	</head>
+	<body>
+	<h2>Educational Chatbot Crowd-based Co-creation Tool</h2>
+	<h3>Successful Registration</h3>
+	<p>Thank you for registering to use the Educational Chatbot Crowd-based Co-creation Tool. This will enable you to provide a specific chatbot with data and information to help inform its design and implementation.</p>
+	<p>For your records, please see below for your credentials to access this site.</p>
+	<p><a href='https://www.nottingham.ac.uk/~ntzjh/cepeh/chatbot-design/index.php'>https://www.nottingham.ac.uk/~ntzjh/cepeh/chatbot-design/index.php</a></p>
+	<table style='width: 65%; border: 1px solid #999'>
+	<tr>
+	<th width='15%' style='text-align: left'>Firstname</th>
+	<th width='15%' style='text-align: left'>Lastname</th>
+	<th width='22%' style='text-align: left'>Username</th>
+	<th width='23%' style='text-align: left'>Password</th>
+	<th width='15%' style='text-align: left'>User Role</th>
+	<th width='20%' style='text-align: left'>Location</th>
+	</tr>
+	<tr>
+	<td width='15%'>$firstname</td>
+	<td width='15%'>$surname</td>
+	<td width='22%'>$username</td>
+	<td width='23%'>Stored securely (<a href='#'>Forgot?</a>)</td>
+	<td width='15%'>$user_type</td>
+	<td width='20%'>$location</td>
+	</tr>
+	</table>
+	<p>We hope you enjoy designing a chatbot with us!</p>
+	<p>Kind Regards,<br>The CEPEH Project Team (<a href='https://cepeh.eu'>https://cepeh.eu</a>)</p>
+	</body>
+	</html>
+	";
+
+	// Always set content-type when sending HTML email
+	$headers = "MIME-Version: 1.0" . "\r\n";
+	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+	/* More headers
+	$headers .= 'From: <james.henderson@nottingham.ac.uk>' . "\r\n";
+	//$headers .= 'Cc: myboss@example.com' . "\r\n";
+	*/
+
+	// Create email headers
+	$headers .= 'From: '.$from."\r\n".
+			'Reply-To: '.$from."\r\n" .
+			'X-Mailer: PHP/' . phpversion();
+
+	// Sending email
+	if(mail($to, $subject, $message, $headers)){
+			consoleMsg('Your mail has been sent successfully.');
+	}
+	else {
+			consoleMsg('Unable to send email. Please try again.');
+	}
+
 	include 'db_connect/db_connect.inc.php';
 
 	// Initial query to set intial positional values
@@ -56,56 +119,6 @@
 
 	// Close database connection
 	mysqli_close($con_app);
-
-	confirmationEmail();
-
-function confirmationEmail() {
-
-	$to =  $email; // "somebody@example.com, somebodyelse@example.com";
-	$subject = "Successful registration for Chatbot Co-Creation Tool";
-
-	$message = "
-	<html>
-	<head>
-	<title>Educational Chatbot Crowd-based Co-creation Tool</title>
-	</head>
-	<body>
-	<h1>Successful Registration</h1>
-	<p>Thank you for registering to use the Chatbot Co-Creation Tool. This will enable you to provide a specific chatbot with data and information to help inform its design and implementation.</p>
-	<p>For your records, please see below for your credentials to access this site.</p>
-	<p><a href='https://www.nottingham.ac.uk/~ntzjh/cepeh/chatbot-design/index.php'>https://www.nottingham.ac.uk/~ntzjh/cepeh/chatbot-design/index.php</a></p>
-	<table>
-	<tr>
-	<th>Firstname</th>
-	<th>Lastname</th>
-	<th>Username</th>
-	<th>Password</th>
-	<th>User Role</th>
-	<th>Location</th>
-	</tr>
-	<tr>
-	<td>$firstname</td>
-	<td>$surname</td>
-	<td>$username</td>
-	<td>Stored securely</td>
-	<td>$user_type</td>
-	<td>$location</td>
-	</tr>
-	</table>
-	</body>
-	</html>
-	";
-
-	// Always set content-type when sending HTML email
-	$headers = "MIME-Version: 1.0" . "\r\n";
-	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-	// More headers
-	$headers .= 'From: <james.henderson@nottingham.ac.uk>' . "\r\n";
-	//$headers .= 'Cc: myboss@example.com' . "\r\n";
-
-	mail($to,$subject,$message,$headers);
-}
 
 ?>
 
