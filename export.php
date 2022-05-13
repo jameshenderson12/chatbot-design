@@ -48,9 +48,9 @@ include('includes/header.inc.php');
 					 type: "POST",
 					 url: "includes/export.inc.php",
 					 success: function(result){
-							if(result > 0) {
+							if(result == true) {
 	            	$('#exportMsg').addClass("alert alert-success");
-								$('#exportMsg').html("Exporting data succesful!");
+								$('#exportMsg').html("Exporting data successful!");
 							}
 	            else {
 	              $('#exportMsg').addClass("alert alert-danger");
