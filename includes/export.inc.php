@@ -1,22 +1,39 @@
 <?php
 
-include 'db_connect/db_connect.inc.php';
 include 'config.inc.php';
+include 'db_connect/db_connect.inc.php';
 
-$chatbots = $mysqli->query("SELECT DISTINCT 'id', 'name','topic','keywords' FROM 'chatbot'");
+$chatbots = mysqli_query($con_app, "SELECT DISTINCT 'id', 'name','topic','keywords' FROM 'chatbot'");
 $success = $sum = 0;
-while($chatbot = $chatbots->fetch_assoc()) {
+
+while($chatbot = mysqli_fetch_assoc($chatbots)) {
     $dir = $chatbot['name'];
     $id = $chatbot['id'];
 
     // create the dir if not exists
-    mkdir($config['base_dir']. "/" . $dir."/data", 0755, true);
-    $domain = fopen($config['base_dir']. "/" . $dir."/domain.yml", 'w') or die("Unable to open domain file!");
-    $nlu = fopen($config['base_dir']. "/" . $dir."/data/nlu.yml", 'w') or die("Unable to open nlu file!");
+    //mkdir($config['base_dir']. "/" . $dir."/data", 0755, true);
+    mkdir("../export/data", 0777, true);
 
-    $intents_query = $mysqli->query("SELECT 'keyword' AS 'intent','example_1','example_2','example_3','example_4','example_5','example_6','example_7','example_8','example_9','example_10', 'example_11','example_12','example_13','example_14','example_15','example_16','example_17','example_18','example_19','example_20', 'example_21','example_22','example_23','example_24','example_25','example_26','example_27','example_28','example_29','example_30' FROM 'intent' WHERE 'chatbot_id' = $id ORDER BY 'keyword'");
+    //if(!mkdir("../export/data", 0755, true)) {
+    //  print_r(error_get_last());
 
-    $responses_query = $mysqli->query("SELECT 'type', 'keyword' AS 'utterance','example_1','example_2','example_3','example_4','example_5','example_6','example_7','example_8','example_9','example_10', 'example_11','example_12','example_13','example_14','example_15','example_16','example_17','example_18','example_19','example_20', 'example_21','example_22','example_23','example_24','example_25','example_26','example_27','example_28','example_29','example_30' FROM 'response' WHERE 'chatbot_id' = $id ORDER BY 'keyword'");
+    echo "position 1";
+
+      $domain = fopen("../export/domain".$id.".yml", 'w') or die("Unable to open domain file!");
+      $nlu = fopen("../export/data/nlu".$id".yml", 'w') or die("Unable to open nlu file!");
+    }
+
+    echo "position 1";
+
+  //  mkdir("../export/data", 0755, true);
+    //$domain = fopen($config['base_dir']. "/" . $dir."/domain.yml", 'w') or die("Unable to open domain file!");
+  //  $domain = fopen("../export/domain.yml", 'w') or die("Unable to open domain file!");
+  //  $nlu = fopen("../export/data/nlu.yml", 'w') or die("Unable to open nlu file!");
+    //$nlu = fopen($config['base_dir']. "/" . $dir."/data/nlu.yml", 'w') or die("Unable to open nlu file!");
+
+    $intents_query = mysqli_query($con_app, "SELECT 'keyword' AS 'intent','example_1','example_2','example_3','example_4','example_5','example_6','example_7','example_8','example_9','example_10', 'example_11','example_12','example_13','example_14','example_15','example_16','example_17','example_18','example_19','example_20', 'example_21','example_22','example_23','example_24','example_25','example_26','example_27','example_28','example_29','example_30' FROM 'intent' WHERE 'chatbot_id' = $id ORDER BY 'keyword'");
+
+    $responses_query = mysqli_query($con_app, "SELECT 'type', 'keyword' AS 'utterance','example_1','example_2','example_3','example_4','example_5','example_6','example_7','example_8','example_9','example_10', 'example_11','example_12','example_13','example_14','example_15','example_16','example_17','example_18','example_19','example_20', 'example_21','example_22','example_23','example_24','example_25','example_26','example_27','example_28','example_29','example_30' FROM 'response' WHERE 'chatbot_id' = $id ORDER BY 'keyword'");
 
     $sum += ($intents_query->num_rows + $responses_query->num_rows);
 
@@ -24,7 +41,7 @@ while($chatbot = $chatbots->fetch_assoc()) {
     fwrite($nlu, "version: '2.0'\nnlu:\n");
     $intents = [];
     $last_intent = "";
-    while($intent = $intents_query->fetch_assoc()) {
+    while($intent = mysqli_fetch_assoc($intents_query)) {
         $arr = array_filter($intent, function($val){
             return $val != null;
         });
@@ -64,7 +81,7 @@ while($chatbot = $chatbots->fetch_assoc()) {
 
     $last_utterance = "";
     // Add the responses
-    while ($response = $responses_query->fetch_assoc()) {
+    while ($response = mysqli_fetch_assoc($responses_query)) {
         $arr = array_filter($response, function($val){
             return $val != null;
         });

@@ -55,7 +55,7 @@ include('includes/header.inc.php');
            <a href="registration.php" class="col ms-1 me-3 btn btn-lg btn-outline-secondary"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
         </div>
 
-          <a href="#">Forgot your password?</a>
+          <a href="forgot.php">Forgot your password?</a>
 
        </form>
      </article>

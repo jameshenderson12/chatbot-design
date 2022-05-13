@@ -1,6 +1,6 @@
 <?php
 
-$page_title = 'Export data';
+$page_title = 'Export';
 $active_page = basename($_SERVER['PHP_SELF'], ".php");
 // Start the session
 session_start();
@@ -41,27 +41,24 @@ include('includes/header.inc.php');
 
 		<?php include('includes/footer.inc.php'); ?>
 
-		<script type="text/javascript">
-			$(document).ready(function(){
-					var export_button = $('#export');
-			    $(export_button).click(function() {
-			      jQuery.ajax({
-							 type: "POST",
-							 url: "includes/export.inc.php",
-							 cache: false,
-							 success: function(response){
-									if(response == true) {
-			            	$('#exportMsg').addClass("alert alert-success");
-										$('#exportMsg').html("Exporting data succesful!");
-									}
-			            else {
-			              $('#exportMsg').addClass("alert alert-danger");
-										$('#exportMsg').html("Oh, no! Something went wrong.");
-									}
-							 }
-						});
-			    });
-			});
+		<script>
+			var export_button = $('#export');
+	    $(export_button).click(function() {
+	      jQuery.ajax({
+					 type: "POST",
+					 url: "includes/export.inc.php",
+					 success: function(result){
+							if(result > 0) {
+	            	$('#exportMsg').addClass("alert alert-success");
+								$('#exportMsg').html("Exporting data succesful!");
+							}
+	            else {
+	              $('#exportMsg').addClass("alert alert-danger");
+								$('#exportMsg').html("Oh, no! Something went wrong.");
+							}
+					 }
+				});
+	    });
 		</script>
 
   </body>
