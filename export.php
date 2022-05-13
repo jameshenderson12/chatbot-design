@@ -1,6 +1,6 @@
 <?php
 
-$page_title = 'Export';
+$page_title = 'Export data';
 $active_page = basename($_SERVER['PHP_SELF'], ".php");
 // Start the session
 session_start();

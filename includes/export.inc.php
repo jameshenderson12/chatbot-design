@@ -10,20 +10,19 @@ while($chatbot = mysqli_fetch_assoc($chatbots)) {
     $dir = $chatbot['name'];
     $id = $chatbot['id'];
 
+
+    if(!mkdir("../export/data", 0777, true)) {
+      print_r(error_get_last());
+    }
+
+
     // create the dir if not exists
     //mkdir($config['base_dir']. "/" . $dir."/data", 0755, true);
-    mkdir("../export/data", 0777, true);
-
-    //if(!mkdir("../export/data", 0755, true)) {
-    //  print_r(error_get_last());
-
-    echo "position 1";
+    //mkdir("../export/data", 0777, true);
 
       $domain = fopen("../export/domain".$id.".yml", 'w') or die("Unable to open domain file!");
       $nlu = fopen("../export/data/nlu".$id".yml", 'w') or die("Unable to open nlu file!");
-    }
 
-    echo "position 1";
 
   //  mkdir("../export/data", 0755, true);
     //$domain = fopen($config['base_dir']. "/" . $dir."/domain.yml", 'w') or die("Unable to open domain file!");
