@@ -1,0 +1,40 @@
+	<header>
+	<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark"><!--style="background-color: #e3f2fd;"-->
+	  <div class="container">
+			<a class="navbar-brand d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none mr-4" href="#">
+				<img src="img/CEPEH-Logo.png" alt="CEPEH logo" height="48" class="d-inline-block align-text-top">
+				Chatbot Design
+			</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">
+	        <li class="nav-item <?= ($active_page == 'home') ? 'active':''; ?>">
+	          <a class="nav-link" href="home.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+	        </li>
+	        <li class="nav-item <?= ($active_page == 'about') ? 'active':''; ?>">
+	          <a class="nav-link" href="about.php"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+	        </li>
+					<li class="nav-item <?= ($active_page == 'privacy') ? 'active':''; ?>">
+	          <a class="nav-link" href="privacy.php"><i class="fa fa-user-secret" aria-hidden="true"></i> Privacy</a>
+	        </li>
+					<li class="nav-item dropdown <?= (($active_page == 'new') || ($active_page == 'edit') || ($active_page == 'delete')) ? 'active':''; ?>">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTasks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="fa fa-commenting" aria-hidden="true"></i> Chatbots
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownTasks">
+							<li><h6 class="dropdown-header">Chatbot instances</h6></li>
+							<li><a class="dropdown-item" href="observe.php"><i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
+						</ul>
+					</li>
+	      </ul>
+
+					<div class="bg-dark text-light m-2"><?php printf("%s %s (%s)", $_SESSION["firstname"], $_SESSION["surname"], $_SESSION["username"]) ?></div>
+					<a href="includes/logout.inc.php" class="btn btn-outline-light btn-sm"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+				</div>
+
+	    </div>
+	  </div>
+	</nav>
+	</header>
