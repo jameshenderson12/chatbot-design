@@ -48,7 +48,7 @@ hr {
 
 					include('includes/db_connect/db_connect.inc.php');
 
-					$sql_get_all_chatbots = "SELECT * FROM chatbot";
+					$sql_get_all_chatbots = "SELECT * FROM chatbot ORDER BY last_updated DESC";
 
 					$chatbots = mysqli_query($con_app, $sql_get_all_chatbots);
 					$sum_chatbots = mysqli_num_rows($chatbots);
