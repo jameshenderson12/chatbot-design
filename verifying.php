@@ -28,6 +28,13 @@ while($row = mysqli_fetch_array($get_chatbot_info)){
 		$keywords = $row['keywords'];
 		$author = $row['author'];
 	}
+
+$sql_get_chatbot_intents = "";
+$get_chatbot_intents = mysqli_query($con_app, $sql_get_chatbot_intents);
+
+$sql_get_chatbot_responses = "";
+$get_chatbot_responses = mysqli_query($con_app, $sql_get_chatbot_responses);
+
 mysqli_close($con_app);
 ?>
 

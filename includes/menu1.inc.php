@@ -26,7 +26,7 @@
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownTasks">
 							<li><h6 class="dropdown-header">Chatbot instances</h6></li>
-							<li><a class="dropdown-item" href="observe.php"><i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
+							<li><a class="dropdown-item" href="view-chatbot.php"><i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
 						</ul>
 					</li>
 	      </ul>

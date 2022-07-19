@@ -45,9 +45,10 @@
 						<li><a class="dropdown-item" href="new.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> New</a></li>
 						<li><a class="dropdown-item" href="edit.php"><i class="fa fa-pen-to-square" aria-hidden="true"></i> Edit</a></li>
 						<li><a class="dropdown-item" href="delete.php"><i class="fa fa-minus-circle" aria-hidden="true"></i> Delete</a></li>
-						<li><a class="dropdown-item" href="observe.php"><i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
+						<li><a class="dropdown-item" href="view-chatbot.php"><i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
             <li><hr class="dropdown-divider"></li>
-						<li><h6 class="dropdown-header">Review</h6></li>
+            <li><h6 class="dropdown-header">Chatbot Data</h6></li>
+            <li><a class="dropdown-item" href="view-data.php">View</a></li>
 						<li><a class="dropdown-item" href="verify.php">Verify data</a></li>
 					</ul>
 				</li>
