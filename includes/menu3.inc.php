@@ -1,4 +1,5 @@
 <header>
+  <!-- Academic/Subject Expert -->
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark"><!--style="background-color: #e3f2fd;"-->
   <div class="container">
 		<a class="navbar-brand d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none mr-4" href="#">
@@ -11,7 +12,7 @@
     <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">
         <li class="nav-item <?= ($active_page == 'home') ? 'active':''; ?>">
-          <a class="nav-link" href="home.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+          <a class="nav-link" href="home.php"><i class="fa fa-home"></i> Home</a>
         </li>
         <li class="nav-item <?= ($active_page == 'about') ? 'active':''; ?>">
           <a class="nav-link" href="about.php"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
@@ -43,16 +44,17 @@
 						<li><h6 class="dropdown-header">Chatbot instances</h6></li>
 						<li><a class="dropdown-item" href="new.php"><i class="fa fa-plus-square" aria-hidden="true"></i> New</a></li>
 						<li><a class="dropdown-item" href="edit.php"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit</a></li>
-						<li><a class="dropdown-item" href="delete.php"><i class="fa fa-minus-square" aria-hidden="true"></i> Delete</a></li>
+						<!--<li><a class="dropdown-item" href="delete.php"><i class="fa fa-minus-square" aria-hidden="true"></i> Delete</a></li>-->
 						<li><a class="dropdown-item" href="observe.php"><i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
 						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+						<li><h6 class="dropdown-header">Review</h6></li>
+						<li><a class="dropdown-item" href="verify.php">Verify data</a></li>
 					</ul>
 				</li>
 
 				<li id="admin_options" class="nav-item dropdown <?= (($active_page == 'overview') || ($active_page == 'report-users')) ? 'active':''; ?>">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="fa fa-cubes" aria-hidden="true"></i> Administration
+						<i class="fa-solid fa-toolbox" aria-hidden="true"></i> Administration
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
 						<li><h6 class="dropdown-header">General</h6></li>

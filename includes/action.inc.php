@@ -106,6 +106,57 @@ function editChatbot() {
 	mysqli_close($con_app);
 }
 
+function verifyChatbot() {
+
+	if(isset($_POST['chatbotName'])) {
+		$name = ucfirst($_POST['chatbotName']);
+	}
+	if(isset($_POST['chatbotTopic'])) {
+		$topic = ucfirst($_POST['chatbotTopic']);
+	}
+	if(isset($_POST['chatbotKeywords'])) {
+		$keywords = strtolower($_POST['chatbotKeywords']);
+	}
+	if(isset($_POST['chatbotAuthor'])) {
+		$author = $_POST['chatbotAuthor'];
+	}
+		$last_updated_by = $_SESSION['firstname'] . " " .	$_SESSION['surname'];
+		$chatbot_id = $_GET['id'];
+
+	include('db_connect/db_connect.inc.php');
+
+	// Create prepared statements for safer DB insertion
+
+	// RETURN INTENTS AND RESPONSES INTO 2 COLUMNS WHICH CAN BE EASILY EDITED!!!!
+
+
+	$stmt1 = mysqli_prepare($con_app, "UPDATE chatbot SET name = ?, topic = ?, keywords = ?, author = ?, last_updated_by = ? WHERE id = ?");
+
+	// Bind the input parameters to the prepared statement
+	mysqli_stmt_bind_param($stmt1, "sssssi", $name, $topic, $keywords, $author, $last_updated_by, $chatbot_id);
+
+	// Execute prepared statement
+ 	mysqli_stmt_execute($stmt1);
+
+	$rows_inserted = mysqli_stmt_affected_rows($stmt1);
+
+	if($rows_inserted == 1) {
+		//echo "<script type='text/javascript'>alert('Result: $rows_inserted row(s) affected');</script>";
+		//print "<p class='alert alert-success'><span class='glyphicon glyphicon-ok'></span> The chatbot has been successfully updated.</p>";
+		echo "<script>location.href='verify.php';</script>";
+	}
+	else {
+		//echo "<script type='text/javascript'>alert('Result: $rows_inserted row(s) affected');</script>";
+		print("<p class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> The chatbot can not be verified. Any related error information will be shown below.</p>");
+  	printf("%s\n", mysqli_error($con_app));
+	}
+	// Close statements
+	mysqli_stmt_close($stmt1);
+
+	// Close database connection
+	mysqli_close($con_app);
+}
+
 function deleteChatbot() {
 	// Get chatbot 'ID' value
 	if(isset($_GET['id'])) {

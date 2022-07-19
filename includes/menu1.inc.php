@@ -1,4 +1,5 @@
 	<header>
+		<!-- Observer -->
 	<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark"><!--style="background-color: #e3f2fd;"-->
 	  <div class="container">
 			<a class="navbar-brand d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none mr-4" href="#">
