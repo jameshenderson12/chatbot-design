@@ -1,6 +1,6 @@
 <?php
 
-$page_title = 'Observe';
+$page_title = 'View';
 $active_page = basename($_SERVER['PHP_SELF'], ".php");
 // Start the session
 session_start();
@@ -48,8 +48,8 @@ include('includes/header.inc.php');
 								<th scope="col" class="col-md-2">Topic</th>
 								<th scope="col" class="col-md-3">Keywords</th>
 					      <th scope="col">Author</th>
-								<!--<th scope="col">Created By</th>-->
 					      <th scope="col">Last Updated By</th>
+								<th scope="col"></th>
 					    </tr>
 					  </thead>
 						<tbody>
@@ -87,7 +87,8 @@ include('includes/header.inc.php');
 											echo "<span class='badge bg-light text-dark border border-secondary mx-1'>$keyword</span>";
 									}
 
-								echo "</td><td>$author</td><!--<td>$creator<br><font size='-1'>$create_time</font></td>--><td>$last_updated_by<br><font size='-1'>$last_updated</font></td></tr>";
+								echo "</td><td>$author</td><!--<td>$creator<br><font size='-1'>$create_time</font></td>--><td>$last_updated_by<br><font size='-1'>$last_updated</font></td><td><a href=\"view-data.php?id=$id\" class='btn btn-primary d-grid gap-2' role='button'><i class='fa fa-eye' aria-hidden='true'></i>
+View Data</a></tr>";
 								}
 
 								mysqli_close($con_app);

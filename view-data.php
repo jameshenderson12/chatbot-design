@@ -16,6 +16,24 @@ include('includes/header.inc.php');
 <!-- Custom styles for this template -->
 <link href="css/sticky-footer-navbar.css" rel="stylesheet">
 
+<script>
+function showIntents(str) {
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","getuser.php?q="+str,true);
+    xmlhttp.send();
+  }
+}
+</script>
+
   </head>
   <body class="d-flex flex-column h-100">
 
@@ -23,7 +41,7 @@ include('includes/header.inc.php');
 
 			<div class="container p-2">
 
-				<h1 class="mt-4">View chatbot instances</h1>
+				<h1 class="mt-4">View chatbot data</h1>
 
 				<?php
 
@@ -40,12 +58,15 @@ include('includes/header.inc.php');
 					response.example_21, response.example_22, response.example_23, response.example_24, response.example_25, response.example_26, response.example_27, response.example_28, response.example_29, response.example_30
 					FROM (chatbot INNER JOIN response ON chatbot.id = response.chatbot_id)
 					WHERE chatbot.id = 9 AND example_1 IS NOT NULL;"
-*/
+
 					$sql_get_chatbot_data = "SELECT DISTINCT intent.keyword, chatbot.name, intent.example_1, intent.example_2, intent.example_3, intent.example_4, intent.example_5, intent.example_6, intent.example_7, intent.example_8, intent.example_9, intent.example_10,
 					intent.example_11, intent.example_12, intent.example_13, intent.example_14, intent.example_15, intent.example_16, intent.example_17, intent.example_18, intent.example_19, intent.example_20,
 					intent.example_21, intent.example_22, intent.example_23, intent.example_24, intent.example_25, intent.example_26, intent.example_27, intent.example_28, intent.example_29, intent.example_30
 					FROM (chatbot INNER JOIN intent ON chatbot.id = intent.chatbot_id)
-					WHERE chatbot.id = 9 AND example_1 IS NOT NULL;"
+					WHERE chatbot.id = $_GET[id] AND example_1 IS NOT NULL";
+*/
+					$sql_get_chatbot_data = "SELECT DISTINCT intent.keyword, chatbot.name FROM (chatbot INNER JOIN intent ON chatbot.id = intent.chatbot_id)
+																	 WHERE chatbot.id = $_GET[id] AND example_1 IS NOT NULL";
 
 /*
 					SELECT chatbot.name, intent.*, response.*
@@ -76,41 +97,53 @@ WHERE
 */
 
 
-				//$chatbot_data = mysqli_query($con_app, $sql_get_chatbot_data);
+				$chatbot_data = mysqli_query($con_app, $sql_get_chatbot_data);
+				$sum_keywords = mysqli_num_rows($chatbot_data);
 
-				echo "<p class='lead'>There is currently NAN chatbot(s) recorded.</p>"
+				while($row = mysqli_fetch_array($chatbot_data)) {
+					$id = $row['id'];
+					$name = $row['name'];
+					$keywords[] = $row['keyword'];
+				}
+
+				echo "<p class='lead'>$name currently has $sum_keywords keyword(s) recorded.</p>";
+				echo "<p>Select a keyword to view the associated intents and responses:</p>";
+				//echo "<ul>";
+
+				echo '
+				<form>
+				<select name="users" onchange="showUser(this.value)">
+				<option value="">Select a keyword:</option>';
+
+				foreach($keywords as $keyword)
+				{
+					//echo "<li><a href='#$keyword' onclick='include('includes/action.inc.php'); getChatbotData($keyword);'>$keyword</a></li>";
+					echo "<option value="$keyword">$keyword</option>";
+				}
+
+				echo '
+				</select>
+			</form>
+			<br>
+			<div id="txtHint"><b>Keyword info will be listed here...</b></div>';
+			
+				//echo "</ul>";
+				mysqli_close($con_app);
+
 				?>
-
-				<div class="row">
-				<div class="col-md-12">
-
-					<div class="table-responsive">
-					<table class="table">
-						<thead>
-					    <tr>
-					      <th scope="col">Intents</th>
-					      <th scope="col">Responses</th>
-					    </tr>
-					  </thead>
-						<tbody>
-
-							<?php
-/*
-								while($row = mysqli_fetch_array($chatbot_data)){
-										$name = $row['name'];
-										$keyword = $row['keyword'];
-
-								echo "<tr><td>$name<td><td>$keyword</td></tr>";
-								}
-
-								mysqli_close($con_app);*/
-							?>
-
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+<!--
+				<form>
+				<select name="users" onchange="showUser(this.value)">
+				  <option value="">Select a person:</option>
+				  <option value="1">Peter Griffin</option>
+				  <option value="2">Lois Griffin</option>
+				  <option value="3">Joseph Swanson</option>
+				  <option value="4">Glenn Quagmire</option>
+				  </select>
+				</form>
+				<br>
+				<div id="txtHint"><b>Person info will be listed here...</b></div>
+-->
 	</div>
 
 	<?php include('includes/footer.inc.php'); ?>
