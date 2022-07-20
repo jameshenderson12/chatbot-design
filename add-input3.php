@@ -43,9 +43,9 @@ example_17, example_18, example_19, example_20, example_21, example_22, example_
 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 $sql_insert_response = "
-INSERT INTO response (chatbot_id, type, added_by, example_1, example_2, example_3, example_4, example_5, example_6, example_7, example_8, example_9, example_10, example_11, example_12, example_13, example_14, example_15, example_16,
+INSERT INTO response (chatbot_id, keyword, type, added_by, example_1, example_2, example_3, example_4, example_5, example_6, example_7, example_8, example_9, example_10, example_11, example_12, example_13, example_14, example_15, example_16,
 example_17, example_18, example_19, example_20, example_21, example_22, example_23, example_24, example_25, example_26, example_27, example_28, example_29, example_30, notes)
-VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 include('includes/db_connect/db_connect.inc.php');
 
@@ -63,7 +63,7 @@ $intentExample_16, $intentExample_17, $intentExample_18, $intentExample_19, $int
 
 
 // Bind the input parameters to the prepared statement
-mysqli_stmt_bind_param($stmt2, "isssssssssssssssssssssssssssssssss", $chatbot_id, $type, $added_by, $responseExample_1, $responseExample_2, $responseExample_3, $responseExample_4, $responseExample_5, $responseExample_6, $responseExample_7, $responseExample_8, $responseExample_9, $responseExample_10, $responseExample_11, $responseExample_12, $responseExample_13, $responseExample_14, $responseExample_15,
+mysqli_stmt_bind_param($stmt2, "issssssssssssssssssssssssssssssssss", $chatbot_id, $keyword, $type, $added_by, $responseExample_1, $responseExample_2, $responseExample_3, $responseExample_4, $responseExample_5, $responseExample_6, $responseExample_7, $responseExample_8, $responseExample_9, $responseExample_10, $responseExample_11, $responseExample_12, $responseExample_13, $responseExample_14, $responseExample_15,
 $responseExample_16, $responseExample_17, $responseExample_18, $responseExample_19, $responseExample_20, $responseExample_21, $responseExample_22, $responseExample_23, $responseExample_24, $responseExample_25, $responseExample_26, $responseExample_27, $responseExample_28, $responseExample_29, $responseExample_30, $notes);
 
 
