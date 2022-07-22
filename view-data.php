@@ -17,6 +17,16 @@ include('includes/header.inc.php');
 <link href="css/sticky-footer-navbar.css" rel="stylesheet">
 
 <script>
+function getLastNumber(url) {
+    var matches = url.match(/\d+/g);
+    return matches[matches.length - 1];
+}
+
+var url = document.location.href;
+//console.log(getLastNumber(url));
+var id = getLastNumber(url);
+
+
 function showIntents(str) {
   if (str == "") {
     document.getElementById("txtHint").innerHTML = "";
@@ -28,7 +38,7 @@ function showIntents(str) {
         document.getElementById("txtHint").innerHTML = this.responseText;
       }
     };
-    xmlhttp.open("GET","getuser.php?q="+str,true);
+    xmlhttp.open("GET","get-intents.php?kd="+str+"&id="+id,true);
     xmlhttp.send();
   }
 }
@@ -112,13 +122,13 @@ WHERE
 
 				echo '
 				<form>
-				<select name="users" onchange="showUser(this.value)">
+				<select name="users" onchange="showIntents(this.value)">
 				<option value="">Select a keyword:</option>';
 
 				foreach($keywords as $keyword)
 				{
 					//echo "<li><a href='#$keyword' onclick='include('includes/action.inc.php'); getChatbotData($keyword);'>$keyword</a></li>";
-					echo "<option value="$keyword">$keyword</option>";
+					echo "<option value=" . $keyword . ">$keyword</option>";
 				}
 
 				echo '
@@ -126,24 +136,10 @@ WHERE
 			</form>
 			<br>
 			<div id="txtHint"><b>Keyword info will be listed here...</b></div>';
-			
-				//echo "</ul>";
-				mysqli_close($con_app);
 
-				?>
-<!--
-				<form>
-				<select name="users" onchange="showUser(this.value)">
-				  <option value="">Select a person:</option>
-				  <option value="1">Peter Griffin</option>
-				  <option value="2">Lois Griffin</option>
-				  <option value="3">Joseph Swanson</option>
-				  <option value="4">Glenn Quagmire</option>
-				  </select>
-				</form>
-				<br>
-				<div id="txtHint"><b>Person info will be listed here...</b></div>
--->
+?>
+
+
 	</div>
 
 	<?php include('includes/footer.inc.php'); ?>
