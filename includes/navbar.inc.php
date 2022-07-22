@@ -29,7 +29,7 @@ else if ($_SESSION['access_level'] == 5) {
 else {
 	// Non-admin user - hide admin menu;
 	include('menu0.inc.php');
-	alert("menu0");
+	consoleMsg('menu0');
 }
 
 ?>
