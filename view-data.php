@@ -38,7 +38,7 @@ function showIntents(str) {
         document.getElementById("txtHint").innerHTML = this.responseText;
       }
     };
-    xmlhttp.open("GET","get-intents.php?kd="+str+"&id="+id,true);
+    xmlhttp.open("GET","get-data.php?kd="+str+"&id="+id,true);
     xmlhttp.send();
   }
 }
@@ -79,8 +79,8 @@ function showIntents(str) {
 					echo "<p>Select a keyword to view the associated intents and responses:</p>";
 
 					echo '
-					<form>
-					<select name="users" onchange="showIntents(this.value)">
+					<form class="col-md-6">
+					<select class="form-select" name="users" onchange="showIntents(this.value)" aria-lable="Select a keyword">
 					<option value="">Select a keyword:</option>';
 
 					foreach($keywords as $keyword)
