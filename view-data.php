@@ -27,7 +27,7 @@ var url = document.location.href;
 var id = getLastNumber(url);
 
 
-function showIntents(str) {
+function showData(str) {
   if (str == "") {
     document.getElementById("txtHint").innerHTML = "";
     return;
@@ -57,12 +57,6 @@ function showIntents(str) {
 
 					include('includes/db_connect/db_connect.inc.php');
 
-				/*	SELECT DISTINCT response.keyword, chatbot.name, response.example_1, response.example_2, response.example_3, response.example_4, response.example_5, response.example_6, response.example_7, response.example_8, response.example_9, response.example_10,
-					response.example_11, response.example_12, response.example_13, response.example_14, response.example_15, response.example_16, response.example_17, response.example_18, response.example_19, response.example_20,
-					response.example_21, response.example_22, response.example_23, response.example_24, response.example_25, response.example_26, response.example_27, response.example_28, response.example_29, response.example_30
-					FROM (chatbot INNER JOIN response ON chatbot.id = response.chatbot_id)
-					WHERE chatbot.id = 9 AND example_1 IS NOT NULL;" */
-
 					$sql_get_chatbot_data = "SELECT DISTINCT intent.keyword, chatbot.name FROM (chatbot INNER JOIN intent ON chatbot.id = intent.chatbot_id)
 																	 WHERE chatbot.id = $_GET[id] AND example_1 IS NOT NULL";
 
@@ -80,7 +74,7 @@ function showIntents(str) {
 
 					echo '
 					<form class="col-md-6">
-					<select class="form-select" name="users" onchange="showIntents(this.value)" aria-lable="Select a keyword">
+					<select class="form-select" name="users" onchange="showData(this.value)" aria-lable="Select a keyword">
 					<option value="">Select a keyword:</option>';
 
 					foreach($keywords as $keyword)
