@@ -49,7 +49,7 @@ include('includes/header.inc.php');
 						<p>Enter any keywords below to find chatbots you can add data for.</p>
 						<div class="input-group mb-3 p-5 bg-secondary">
 						  <input type="search" id="searchTerm" name="searchTerm" class="form-control-lg input-group-lg col-md-9" placeholder="Enter any keywords..." aria-label="Search" aria-describedby="button-addon2">
-						  <button class="btn btn-lg btn-primary" type="submit" name="submit" id="button-addon2"><span class="fa fa-search"></span> Search</button>
+						  <button class="btn btn-lg btn-primary" type="submit" name="submit" id="button-addon2"><i class="bi bi-search"></i> Search</button>
 						</div>
 					</form>
         </div>
@@ -73,7 +73,7 @@ include('includes/header.inc.php');
 								$author = $row['author'];
 								$last_updated = date($config['date_format'], strtotime($row['last_updated']));
 
-								echo "<li>$name ($topic) by $author<br><a href=\"add-input1.php?cid=$cid\" type='button' class='btn btn-sm btn-success'><span class='fa fa-plus'></span> Add detail</a></td><span class='badge bg-light text-dark '>Last updated: $last_updated</span></li>";
+								echo "<li>$name ($topic) by $author<br><a href=\"add-input1.php?cid=$cid\" type='button' class='btn btn-sm btn-success'><i class='bi bi-plus'></i> Add detail</a></td><span class='badge bg-light text-dark '>Last updated: $last_updated</span></li>";
 							}
 
 							echo "</ul>";
@@ -133,7 +133,7 @@ include('includes/header.inc.php');
 								echo "<td>$name</td>";
 								echo "<td>$topic</td>";
 								echo "<td>$author</td>";
-								echo "<td><a href=\"add-input1.php?cid=$cid\" type='button' class='btn btn-success'><span class='fa fa-plus'></span> Add detail</a></td>";
+								echo "<td><a href=\"add-input1.php?cid=$cid\" type='button' class='btn btn-success'><i class='bi bi-plus'></i> Add detail</a></td>";
 								echo "</tr>";
 							}
 

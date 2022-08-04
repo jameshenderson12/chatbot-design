@@ -51,8 +51,8 @@ include('includes/header.inc.php');
          </div>
 
          <div class="row my-4">
-           <button class="col me-1 ms-3 btn btn-lg btn-primary" type="submit"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</button>
-           <a href="registration.php" class="col ms-1 me-3 btn btn-lg btn-outline-secondary"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+           <button class="col me-1 ms-3 btn btn-lg btn-primary" type="submit"><i class="bi bi-box-arrow-in-right"></i> Log in</button>
+           <a href="registration.php" class="col ms-1 me-3 btn btn-lg btn-outline-secondary"><i class="bi bi-person-plus"></i> Register</a>
         </div>
 
           <a href="forgot.php">Forgot your password?</a>

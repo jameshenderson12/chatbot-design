@@ -10,8 +10,8 @@
 	    </button>
 	    <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
 
-					<div class="bg-dark text-light m-2"><?php printf("%s %s (%s)", $_SESSION["firstname"], $_SESSION["surname"], $_SESSION["username"]) ?></div>
-					<a href="includes/logout.inc.php" class="btn btn-outline-light btn-sm"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+					<div class="bg-dark text-light m-2"><i class="bi bi-person"></i> <?php printf("%s %s (%s)", $_SESSION["firstname"], $_SESSION["surname"], $_SESSION["username"]) ?></div>
+					<a href="includes/logout.inc.php" class="btn btn-outline-light btn-sm"><i class="bi bi-box-arrow-right"></i> Log out</a>
 				</div>
 
 	    </div>

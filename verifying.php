@@ -8,127 +8,94 @@ session_start();
 if (!(isset($_SESSION['login']) && $_SESSION['login'] != "")) {
 	header ("Location: index.php");
 }
-if(isset($_POST['submit'])) { // check if form was submitted
-	if ((isset($_POST['chatbotName'])) && (isset($_POST['chatbotTopic'])) && (isset($_POST['chatbotKeywords'])) && (isset($_POST['chatbotAuthor']))) {
-		include('includes/action.inc.php');
-		verifyChatbot();
-		header("Location: verify.php");
-		exit; // Location header is set, stop the script
-	}
-}
 include('includes/config.inc.php');
 include('includes/header.inc.php');
-include('includes/db_connect/db_connect.inc.php');
-$sql_get_chatbot_info = "SELECT * FROM chatbot WHERE id = $_GET[id]";
-$get_chatbot_info = mysqli_query($con_app, $sql_get_chatbot_info);
-while($row = mysqli_fetch_array($get_chatbot_info)){
-		$id = $row['id'];
-		$name = $row['name'];
-		$topic = $row['topic'];
-		$keywords = $row['keywords'];
-		$author = $row['author'];
-	}
 
-$sql_get_chatbot_intents = "";
-$get_chatbot_intents = mysqli_query($con_app, $sql_get_chatbot_intents);
-
-$sql_get_chatbot_responses = "";
-$get_chatbot_responses = mysqli_query($con_app, $sql_get_chatbot_responses);
-
-mysqli_close($con_app);
 ?>
 
 <!-- Custom styles for this template -->
 <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+
+<script>
+function getLastNumber(url) {
+    var matches = url.match(/\d+/g);
+    return matches[matches.length - 1];
+}
+
+var url = document.location.href;
+//console.log(getLastNumber(url));
+var id = getLastNumber(url);
+
+
+function editData(str) {
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","verify-data.php?kd="+str+"&id="+id,true);
+    xmlhttp.send();
+  }
+}
+</script>
 
   </head>
   <body class="d-flex flex-column h-100">
 
 		<?php include('includes/navbar.inc.php'); ?>
 
-				<div class="container p-2">
+			<div class="container p-2">
 
-					<h1 class="mt-4">Verify chatbot data</h1>
-					<p class="lead">Verify the data for this existing chatbot.</p>
+				<h1 class="mt-4">View chatbot data</h1>
 
-				</div>
+				<?php
 
-				<div class="container bg-light border border-secondary">
-					<form id="verifyForm" method="POST">
-						<div class="row mb-3">
-							<div class="col-md-6 bg-secondary text-light"><h4>Intents</h4></div>
-							<div class="col-md-6 bg-secondary text-light"><h4>Responses</h4></div>
-						</div>
-						<div class="row mb-5">
-							<div class="col-md-6">
-							  <label for="chatbotName" class="form-label"><strong>1. Provide a name for the new chatbot:</strong></label>
-							  <input type="text" class="form-control" id="chatbotName" name="chatbotName" value="<?php echo $name ?>">
-								<div id="nameHelp" class="form-text small">This needs to be unique. Enter a name to check if available.</div>
-							</div>
-							<div class="col-md-6 bg-light">
-								<p class="p-0 m-0">
-									<em>A human name such as "Alison", "Elena", "George" or "Peter".
-									<br>A mechanical or technical sounding name such as "JBot22" or "SupportBot2000".
-									<br>An abbreviation of name or topic such as "CYBERSEC" or "GEOCHAT".</em>
-								</p>
-							</div>
-						</div>
-						<div class="row mb-5">
-							<div class="col-md-6">
-								<label for="chatbotTopic" class="form-label"><strong>2. Provide the subject area or topic for the new chatbot:</strong></label>
-								<input type="text" class="form-control" value="<?php echo $topic ?>" id="chatbotTopic" name="chatbotTopic">
-								<!--<div id="emailHelp" class="form-text small">We'll never share your email with anyone else.</div>-->
-							</div>
-							<div class="col-md-6 bg-light">
-								<p class="p-0 m-0">
-									<em>Cybersecurity
-									<br>Healthcare assistant
-									<br>Critical appraisal</em>
-								</p>
-							</div>
-						</div><!--.row-->
-						<div class="row mb-5">
-							<div class="col-md-6">
-								<label for="chatbotAuthor" class="form-label"><strong>3. Provide the name of lead author (responsible for content) for the new chatbot:</strong></label>
-								<input type="text" class="form-control" value="<?php echo $author ?>" id="chatbotAuthor" name="chatbotAuthor">
-								<!--<div id="emailHelp" class="form-text small">We'll never share your email with anyone else.</div>-->
-							</div>
-							<div class="col-md-6 bg-light">
-								<p class="p-0 m-0">
-									<em>Stathis Konstantinidis
-									<br>Matthew Pears
-									<br>James Henderson</em>
-								</p>
-							</div>
-						</div><!--.row-->
-						<div class="row mb-5">
-							<div class="col-md-6">
-							  <label for="" class="form-label"><strong>4. Provide a short list of keywords to summarise this new chatbot:</strong></label>
-							  <input type="text" class="form-control" id="chatbotKeywords" value="<?php echo $keywords ?>" id="chatbotKeywords" name="chatbotKeywords">
-								<div id="keywordsHelp" class="form-text small">Separate listed words with a comma.</div>
-							</div>
-							<div class="col-md-6 bg-light">
-								<p class="p-0 m-0">
-									<em>Cybersecurity, online, safety, security, protection, users, learning
-									<br>Healthcare, assistant, help, support, health, clinical, practice, learning
-									<br>Critical, appraisal, research, literature, dissertation, thesis, review</em>
-								</p>
-							</div>
-						</div><!--.row-->
-						<div class="row mb-5">
-							<div class="col-md-6">
-							  <button class="btn btn-primary col-md-3" name="submit" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update</button>
-								<button class="btn btn-outline-secondary col-md-3" type="reset"><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
-							</div>
-							<!--
-							<div class="col-md-5 bg-light">
-								<button class="btn btn-secondary col-md-3" type="button" data-bs-toggle="modal" data-bs-target="#helpModal">Help</button>
-							</div>-->
-						</div><!--.row-->
-					</form>
-				</div><!--.container-->
+					include('includes/db_connect/db_connect.inc.php');
+
+					$sql_get_chatbot_data = "SELECT DISTINCT intent.keyword, chatbot.name FROM (chatbot INNER JOIN intent ON chatbot.id = intent.chatbot_id)
+																	 WHERE chatbot.id = $_GET[id] AND example_1 IS NOT NULL";
+
+					$chatbot_data = mysqli_query($con_app, $sql_get_chatbot_data);
+					$sum_keywords = mysqli_num_rows($chatbot_data);
+
+					while($row = mysqli_fetch_array($chatbot_data)) {
+						$id = $row['id'];
+						$name = $row['name'];
+						$keywords[] = $row['keyword'];
+					}
+
+					echo "<p class='lead'>$name currently has $sum_keywords keyword(s) recorded.</p>";
+					echo "<p>Select a keyword to view the associated intents and responses:</p>";
+
+					echo '
+					<form class="col-md-6">
+					<div class="input-group mb-3">
+					<label class="input-group-text" for="keywords">Keywords</label>
+					<select class="form-select" id="keywords" name="users" onchange="editData(this.value)" aria-lable="Select a keyword">
+					<option value="">Choose...</option>';
+
+					foreach($keywords as $keyword)
+					{
+						//echo "<li><a href='#$keyword' onclick='include('includes/action.inc.php'); getChatbotData($keyword);'>$keyword</a></li>";
+						echo "<option value=" . $keyword . ">$keyword</option>";
+					}
+
+					echo '
+					</select>
+					</div>
+				</form>
+				<br>
+				<div id="txtHint"><b>Keyword info will be listed here...</b></div>';
+				?>
+
+	</div>
 
 	<?php include('includes/footer.inc.php'); ?>
 
-	</body>
+  </body>
 </html>

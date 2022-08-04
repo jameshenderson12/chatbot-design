@@ -12,13 +12,13 @@
     <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4">
         <li class="nav-item <?= ($active_page == 'home') ? 'active':''; ?>">
-          <a class="nav-link" href="home.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+          <a class="nav-link" href="home.php"><i class="bi bi-house-fill"></i> Home</a>
         </li>
         <li class="nav-item <?= ($active_page == 'about') ? 'active':''; ?>">
-          <a class="nav-link" href="about.php"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+          <a class="nav-link" href="about.php"><i class="bi bi-question-diamond-fill"></i> About</a>
         </li>
 				<li class="nav-item <?= ($active_page == 'privacy') ? 'active':''; ?>">
-          <a class="nav-link" href="privacy.php"><i class="fa fa-user-secret" aria-hidden="true"></i> Privacy</a>
+          <a class="nav-link" href="privacy.php"><i class="bi bi-shield-lock-fill"></i></i> Privacy</a>
         </li>
 
 
@@ -38,33 +38,32 @@
 
 				<li class="nav-item dropdown <?= (($active_page == 'new') || ($active_page == 'edit') || ($active_page == 'delete')) ? 'active':''; ?>">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTasks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="fa fa-commenting" aria-hidden="true"></i> Chatbots
+						<i class="bi bi-chat-right-text-fill"></i> Chatbots
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownTasks">
-						<li><h6 class="dropdown-header">Chatbot instances</h6></li>
-						<li><a class="dropdown-item" href="new.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> New</a></li>
-						<li><a class="dropdown-item" href="edit.php"><i class="fa fa-pen-to-square" aria-hidden="true"></i> Edit</a></li>
-						<li><a class="dropdown-item" href="delete.php"><i class="fa fa-minus-circle" aria-hidden="true"></i> Delete</a></li>
-						<li><a class="dropdown-item" href="view-chatbot.php"><i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
+						<!--<li><h6 class="dropdown-header">Chatbot instances</h6></li>-->
+            <li><a class="dropdown-item" href="view-chatbot.php"><i class="bi bi-eye-fill"></i> View</a></li>
+						<li><a class="dropdown-item" href="verify.php"><i class="bi bi-pass-fill"></i> Verify</a></li><!--<i class="bi bi-ui-checks"></i>-->
             <li><hr class="dropdown-divider"></li>
-            <li><h6 class="dropdown-header">Chatbot Data</h6></li>
-            <li><a class="dropdown-item" href="view-data.php">View</a></li>
-						<li><a class="dropdown-item" href="verify.php">Verify data</a></li>
+						<li><a class="dropdown-item" href="new.php"><i class="bi bi-plus-circle-fill"></i> New</a></li>
+						<li><a class="dropdown-item" href="edit.php"><i class="bi bi-pencil-fill"></i> Edit</a></li>
+						<li><a class="dropdown-item" href="delete.php"><i class="bi bi-trash3-fill"></i> Delete</a></li>
+
 					</ul>
 				</li>
 
 				<li id="admin_options" class="nav-item dropdown <?= (($active_page == 'overview') || ($active_page == 'report-users') || ($active_page == 'export')) ? 'active':''; ?>">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="fa-solid fa-toolbox"></i> Administration
+						<i class="bi bi-wrench-adjustable"></i> Administration
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
 						<li><h6 class="dropdown-header">General</h6></li>
-						<li><a class="dropdown-item" href="overview.php"><i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a></li>
-						<li><a class="dropdown-item" href="export.php"><i class="fa fa-database" aria-hidden="true"></i> Export data</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
+						<li><a class="dropdown-item" href="overview.php"><i class="bi bi-speedometer"></i> Overview</a></li>
+						<li><a class="dropdown-item" href="export.php"><i class="bi bi-file-earmark-bar-graph-fill"></i> Export data</a></li>
+						<!--<li><a class="dropdown-item" href="#">Another action</a></li>-->
             <li><hr class="dropdown-divider"></li>
 						<li class="dropdown-header">Reports</li>
-            <li><a class="dropdown-item" href="report-users.php"><i class="fa fa-users" aria-hidden="true"></i> Users</a></li>
+            <li><a class="dropdown-item" href="report-users.php"><i class="bi bi-people-fill"></i> Users</a></li>
           </ul>
         </li>
 
@@ -73,8 +72,8 @@
         </li>-->
       </ul>
 
-				<div class="bg-dark text-light m-2"><i class="fa-solid fa-user-check"></i> <?php printf("%s %s (%s)", $_SESSION["firstname"], $_SESSION["surname"], $_SESSION["username"]) ?></div>
-				<a href="includes/logout.inc.php" class="btn btn-outline-light btn-sm"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+				<div class="bg-dark text-light m-2"><i class="bi bi-person"></i> <?php printf("%s %s (%s)", $_SESSION["firstname"], $_SESSION["surname"], $_SESSION["username"]) ?></div>
+				<a href="includes/logout.inc.php" class="btn btn-outline-light btn-sm"><i class="bi bi-box-arrow-right"></i> Log out</a>
 			</div>
 
     </div>
