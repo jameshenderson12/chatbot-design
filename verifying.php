@@ -96,6 +96,11 @@ function editData(str) {
 	</div>
 
 	<?php include('includes/footer.inc.php'); ?>
-
+	<script>
+	function removeReadOnly(intentExample_Id) {
+		//alert("Example: " + intentExample_Id);
+		document.getElementById(intentExample_Id).removeAttribute("readonly");
+	}
+	</script>
   </body>
 </html>

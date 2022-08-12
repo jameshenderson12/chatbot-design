@@ -88,7 +88,7 @@ include('includes/header.inc.php');
 											echo "<span class='badge bg-light text-dark border border-secondary mx-1'>$keyword</span>";
 									}
 
-								echo "</td><td>$author</td><!--<td>$creator<br><font size='-1'>$create_time</font></td>--><td>$last_updated_by<br><font size='-1'>$last_updated</font></td><td><a href=\"verifying.php?id=$id\" class='btn btn-primary d-grid gap-2' role='button'><i class='bi bi-pass-fill'></i>
+								echo "</td><td>$author</td><!--<td>$creator<br><font size='-1'>$create_time</font></td>--><td>$last_updated_by<br><font size='-1'>$last_updated</font></td><td><a href=\"verifying.php?id=$id\" class='btn btn-primary d-grid gap-2' role='button'><i class='bi bi-pass'></i>
 Verify</a>
 								</td></tr>";
 								}

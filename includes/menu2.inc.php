@@ -24,9 +24,15 @@
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTasks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="bi bi-chat-right-text-fill"></i> Chatbots
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdownTasks">
-						<li><h6 class="dropdown-header">Chatbot instances</h6></li>
-						<li><a class="dropdown-item" href="view-chatbot.php"><i class="bi bi-eye"></i> View</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownTasks">
+            <li><h6 class="dropdown-header">Chatbot Data</h6></li>
+            <li><a class="dropdown-item" href="view-chatbot.php"><i class="bi bi-eye"></i> View</a></li>
+						<!--<li><a class="dropdown-item" href="verify.php"><i class="bi bi-pass"></i> Verify</a></li><!--<i class="bi bi-ui-checks"></i>-->
+            <li><hr class="dropdown-divider"></li>
+            <li><h6 class="dropdown-header">Chatbot Instances</h6></li>
+						<!--<li><a class="dropdown-item" href="new.php"><i class="bi bi-plus-circle"></i> New</a></li>-->
+						<li><a class="dropdown-item" href="edit.php"><i class="bi bi-pencil"></i> Edit</a></li>
+						<!--<li><a class="dropdown-item" href="delete.php"><i class="bi bi-trash3"></i> Delete</a></li>-->
 					</ul>
 				</li>
       </ul>

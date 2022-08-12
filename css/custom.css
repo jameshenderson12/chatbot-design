@@ -49,3 +49,30 @@ button.link {
   text-decoration: underline;
   font: inherit;
 }
+
+.dropdown-menu {
+  background-color: #212529 !important;
+}
+
+.dropdown-item {
+  color: #e9ecef !important;
+}
+
+.dropdown-item:hover {
+  color: #212529 !important;
+}
+
+.dropdown-divider {
+	border-top: 1px solid #FFF !important;
+}
+
+.dropdown-header {
+	font-size: .75rem !important;
+	color: #888 !important;
+}
+/*
+.dropdown-item.active, .dropdown-item:active {
+  color: #212529 !important;
+  background-color: #fcf30d !important;
+}
+*/

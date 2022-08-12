@@ -25,8 +25,8 @@
 							<i class="bi bi-chat-right-text-fill"></i> Chatbots
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownTasks">
-							<li><h6 class="dropdown-header">Chatbot instances</h6></li>
-							<li><a class="dropdown-item" href="view-chatbot.php"><i class="bi bi-eye"></i> View</a></li>
+	            <li><h6 class="dropdown-header">Chatbot Data</h6></li>
+	            <li><a class="dropdown-item" href="view-chatbot.php"><i class="bi bi-eye"></i> View</a></li>
 						</ul>
 					</li>
 	      </ul>

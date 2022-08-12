@@ -24,12 +24,12 @@ include('includes/header.inc.php');
     <div class="container p-2">
 
 			<h1 class="mt-4">Privacy Statement</h1>
-			<p class="lead">A simple privacy statement for the reference of all users.</p>
-			<div class="border border-secondary p-4 rounded-3">
-				<h2>The Use of Personal Information <span class="badge bg-secondary">Work in progress</span></h2>
+			<p class="lead">A simple privacy statement for all users' reference.</p>
+			<div class="border border-secondary p-3 rounded-3">
+				<h2 class="bg-secondary text-light p-1 text-center">Using Your Personal Information</h2>
 				<h3 class="mt-2">Why does this application exist?</h3>
 				<p>The creation of Educational Chatbot Crowd-based Co-creation Tool has been developed to assist with the design process for co-creating an educational chatbot.</p>
-				<h3>What data of mine is held in the database?</h3>
+				<h3>What data do we collect?</h3>
 				<p>The data that is stored, as a requirement of being able to use this application, is as follows:</p>
 				<ul>
 					<li>First name</li>
@@ -42,6 +42,31 @@ include('includes/header.inc.php');
 					<li>Date registered</li>
 					<li>Date of last login</li>
 				</ul>
+				<h3>How do we collect your data?</h3>
+				<p>We collect and process your data when you:</p>
+					<ul>
+						<li>Register as a user of this application</li>
+						<li>Add or amend chatbot instances and/or chatbot data</li>
+						<li>View this application (via your browser’s cookies)</li>
+					</ul>
+				<h3>How will we use your data?</h3>
+				<p>We collect your data as part of research into the development of education processes as required by the <a href="https://cepeh.eu/" target="_blank">CEPEH project</a>. This research will allow us to understand and evaluate more about how chatbots can be developed for and used in educational contexts.</p>
+				<h3>How do we store your data?</h3>
+				<p>The University of Nottingham securely stores your data on its data hosting solutions based in Shropshire, England, UK.</p>
+				<p>We will keep your data, as described in the 'What data do we collect?' section for the period of the University's data retention policy. Once this time period has expired, we will delete your data by perminently removing all your records from the application database.</p>
+				<h3>What are cookies?</h3>
+				<h3>What types of cookies do we use?</h3>
+				<h3>How to manage your cookies</h3>
+				<h3>What are your data protection rights?</h3>
+				<p>Please refer to the University of Nottingham's <a href="https://www.nottingham.ac.uk/utilities/privacy/privacy.aspx" target="_blank">data protection information</a> for specific detail.</p>
+				<h3>Privacy policies of other websites</h3>
+				<h3>Changes to our privacy policy</h3>
+				<h3>How to contact us</h3>
+				<h3>How to contact the appropriate authorities</h3>
+
+
+<p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p>
+
 				<p>No other personal data is collected to ensure minimal data collection necessary as per General Data Protection Regulation (GDPR) compliance.</p>
 				<h3>How is non-personal data obtained?</h3>
 				<p>Description TBC.</p>
