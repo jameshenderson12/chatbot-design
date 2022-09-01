@@ -28,10 +28,12 @@ var id = getLastNumber(url);
 
 
 function editData(str) {
+	/*
   if (str == "") {
     document.getElementById("txtHint").innerHTML = "";
     return;
-  } else {
+  }
+	else {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -40,8 +42,46 @@ function editData(str) {
     };
     xmlhttp.open("GET","verify-data.php?kd="+str+"&id="+id,true);
     xmlhttp.send();
+  }*/
+
+	editIntents(str);
+	editResponses(str);
+}
+
+function editIntents(str) {
+  if (str == "") {
+    document.getElementById("intentsCol").innerHTML = "";
+    return;
+  }
+	else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("intentsCol").innerHTML = this.responseText;
+      }
+    };
+		xmlhttp.open("GET", "get-intents.php?kd="+str+"&id="+id, true);
+    xmlhttp.send();
   }
 }
+
+function editResponses(str) {
+  if (str == "") {
+    document.getElementById("responsesCol").innerHTML = "";
+    return;
+  }
+	else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("responsesCol").innerHTML = this.responseText;
+      }
+    };
+		xmlhttp.open("GET", "get-responses.php?kd="+str+"&id="+id, true);
+    xmlhttp.send();
+  }
+}
+
 </script>
 
   </head>
@@ -90,16 +130,28 @@ function editData(str) {
 					</div>
 				</form>
 				<br>
-				<div id="txtHint"><b>Keyword info will be listed here...</b></div>';
+				<!--<div id="txtHint"><b>Keyword info will be listed here...</b></div>-->
+				<div class="row">
+				<div class="col-md-6" id="intentsCol">Intents</div>
+					<div class="col-md-6" id="responsesCol">Responses</div>
+				</div>
+				';
 				?>
 
 	</div>
 
 	<?php include('includes/footer.inc.php'); ?>
 	<script>
-	function removeReadOnly(intentExample_Id) {
-		//alert("Example: " + intentExample_Id);
-		document.getElementById(intentExample_Id).removeAttribute("readonly");
+
+	function checkIfEmpty(example_Id) {
+		if (document.getElementById(example_Id).innerHTML == "") {
+				this.hidden = true;
+		}
+	}
+
+	function removeReadOnly(example_Id) {
+		//alert("Example: " + example_Id);
+		document.getElementById(example_Id).removeAttribute("readonly");
 	}
 	</script>
   </body>

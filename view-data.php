@@ -74,8 +74,10 @@ function showData(str) {
 
 					echo '
 					<form class="col-md-6">
-					<select class="form-select" name="users" onchange="showData(this.value)" aria-lable="Select a keyword">
-					<option value="">Select a keyword:</option>';
+					<div class="input-group mb-3">
+					<label class="input-group-text" for="keywords">Keywords</label>
+					<select class="form-select" id="keywords" name="users" onchange="showData(this.value)" aria-lable="Select a keyword">
+					<option value="">Choose...</option>';
 
 					foreach($keywords as $keyword)
 					{
@@ -85,6 +87,7 @@ function showData(str) {
 
 					echo '
 					</select>
+					</div>
 				</form>
 				<br>
 				<div id="txtHint"><b>Keyword info will be listed here...</b></div>';
