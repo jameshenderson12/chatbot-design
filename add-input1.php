@@ -83,8 +83,8 @@ include('includes/header.inc.php');
 										<input type="text" name="intentExample_1" class="form-control" id="intentExample_1">
 										<div id="intentMsg" class="form-text small">Add (or remove) alternative phrases.</div>
 
-										<a href="javascript:void(0);" class="add_button btn btn-sm btn-primary mb-2 mr-2"><i class="fa fa-plus"></i></a>
-										<a href='javascript:void(0);' class='remove_button btn btn-sm btn-danger mb-2 mr-2 disabled'><i class='fa fa-minus'></i></a>
+										<a href="javascript:void(0);" class="add_button btn btn-sm btn-primary mb-2 mr-2"><i class="bi bi-plus-lg"></i></a>
+										<a href='javascript:void(0);' class='remove_button btn btn-sm btn-danger mb-2 mr-2 disabled'><i class='bi bi-dash-lg'></i></a>
 									</div>
 								</div>
 
@@ -161,8 +161,8 @@ include('includes/header.inc.php');
 						</div><!--.row-->
 						<div class="row mb-5">
 							<div class="col-md-6">
-								<button class='btn btn-primary col-md-3' type="submit" name="submit"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Continue</button>
-								<button class="btn btn-outline-secondary col-md-3" type="Reset" onclick="javascript: $('#validationMsg').remove();"><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
+								<button class='btn btn-primary col-md-3' type="submit" name="submit"><i class="bi bi-arrow-right" aria-hidden="true"></i> Continue</button>
+								<button class="btn btn-outline-secondary col-md-3" type="Reset" onclick="javascript: $('#validationMsg').remove();"><i class="bi bi-x-lg" aria-hidden="true"></i> Reset</button>
 
 							</div>
 							<div class="col-md-6 bg-light">
@@ -173,7 +173,7 @@ include('includes/header.inc.php');
 
 
 			<?php include('includes/footer.inc.php'); ?>
-						
+
 			<script type="text/javascript">
 			$(document).ready(function(){
 			    var maxField = 50; // Input fields increment limitation

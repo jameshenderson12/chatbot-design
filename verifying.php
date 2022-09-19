@@ -142,13 +142,6 @@ function editResponses(str) {
 
 	<?php include('includes/footer.inc.php'); ?>
 	<script>
-
-	function checkIfEmpty(example_Id) {
-		if (document.getElementById(example_Id).innerHTML == "") {
-				this.hidden = true;
-		}
-	}
-
 	function removeReadOnly(example_Id) {
 		//alert("Example: " + example_Id);
 		document.getElementById(example_Id).removeAttribute("readonly");

@@ -39,7 +39,7 @@ hr {
 					<?php
 
 							if(isset($_POST['submit'])) { //check if form was submitted
-								if ((isset($_POST['chatbotName'])) && (isset($_POST['chatbotTopic'])) && (isset($_POST['chatbotKeywords'])) && (isset($_POST['chatbotAuthor']))) {
+								if ((isset($_POST['chatbotName'])) && (isset($_POST['chatbotTopic'])) && (isset($_POST['chatbotAuthor'])) && (isset($_POST['chatbotKeywords']))) {
 									include('includes/action.inc.php');
 									createChatbot();
 								}
@@ -115,7 +115,7 @@ hr {
 						</div><!--.row-->
 						<div class="row mb-5">
 							<div class="col-md-7">
-							  <button class="btn btn-primary col-md-3" name="submit" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Create</button>
+							  <button class="btn btn-primary col-md-3" type="submit" name="submit"><i class="fa fa-plus" aria-hidden="true"></i> Create</button>
 								<button class="btn btn-outline-secondary col-md-3" type="reset"><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
 							</div>
 							<!--<div class="col-md-5 bg-light">
@@ -125,8 +125,8 @@ hr {
 					</form>
 				</div><!--.container-->
 
-    </div><!--.container-->
-	</div>
+<!--    </div><!--.container-->
+<!--	</div> -->
 
 	<!-- Help Modal -->
 	<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">

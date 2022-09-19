@@ -17,9 +17,11 @@
         <li class="nav-item <?= ($active_page == 'about') ? 'active':''; ?>">
           <a class="nav-link" href="about.php"><i class="bi bi-question-diamond-fill"></i> About</a>
         </li>
+        <!--
 				<li class="nav-item <?= ($active_page == 'privacy') ? 'active':''; ?>">
           <a class="nav-link" href="privacy.php"><i class="bi bi-shield-lock-fill"></i></i> Privacy</a>
         </li>
+      -->
 
 
 <!-- DROPDOWN GENERIC
@@ -65,7 +67,7 @@
 						<!--<li><a class="dropdown-item" href="#">Another action</a></li>-->
             <li><hr class="dropdown-divider"></li>
 						<li class="dropdown-header">Reports</li>
-            <li><a class="dropdown-item" href="report-users.php"><i class="bi bi-people-fill"></i> Users</a></li>            
+            <li><a class="dropdown-item" href="report-users.php"><i class="bi bi-people-fill"></i> Users</a></li>
           </ul>
         </li>
 

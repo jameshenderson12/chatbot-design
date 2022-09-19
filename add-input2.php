@@ -199,8 +199,8 @@ table {
 										<input type="text" name="responseExample_1" class="form-control" id="responseExample_1">
 										<div id="emailHelp" class="form-text small">Add more or remove entries.</div>
 
-										<a href="javascript:void(0);" class="add_button btn btn-sm btn-primary mb-2 mr-2"><i class="fa fa-plus"></i></a>
-										<a href='javascript:void(0);' class='remove_button btn btn-sm btn-danger mb-2 mr-2 disabled'><i class='fa fa-minus'></i></a>
+										<a href="javascript:void(0);" class="add_button btn btn-sm btn-primary mb-2 mr-2"><i class="bi bi-plus-lg"></i></a>
+										<a href='javascript:void(0);' class='remove_button btn btn-sm btn-danger mb-2 mr-2 disabled'><i class="bi bi-x-lg"></i></a>
 									</div>
 								</div>
 
@@ -247,8 +247,8 @@ table {
 						</div><!--.row-->
 						<div class="row mb-5">
 							<div class="col-md-6">
-								<button class='btn btn-primary col-md-3' type="submit" name="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Submit</button>
-								<button class="btn btn-outline-secondary col-md-2" type="Reset">Reset</button>
+								<button class='btn btn-primary col-md-3' type="submit" name="submit"><i class="bi bi-send" aria-hidden="true"></i> Submit</button>
+								<button class="btn btn-outline-secondary col-md-2" type="Reset"><i class="bi bi-lg-x" aria-hidden="true"></i>Reset</button>
 							</div>
 							<div class="col-md-5 bg-light">
 							</div>

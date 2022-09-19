@@ -17,11 +17,11 @@ function createChatbot() {
 	if(isset($_POST['chatbotTopic'])) {
 		$topic = ucfirst($_POST['chatbotTopic']);
 	}
-	if(isset($_POST['chatbotKeywords'])) {
-		$keywords = strtolower($_POST['chatbotKeywords']);
-	}
 	if(isset($_POST['chatbotAuthor'])) {
 		$author = $_POST['chatbotAuthor'];
+	}
+	if(isset($_POST['chatbotKeywords'])) {
+		$keywords = strtolower($_POST['chatbotKeywords']);
 	}
 		$creator = $_SESSION['firstname'] . " " .	$_SESSION['surname'];
 		$last_updated_by = $creator;
@@ -40,14 +40,14 @@ function createChatbot() {
 	$rows_inserted = mysqli_stmt_affected_rows($stmt1);
 
 	if($rows_inserted == 1) {
-		//echo "<script type='text/javascript'>alert('Result: $rows_inserted row(s) affected');</script>";
+		echo "<script type='text/javascript'>alert('Result: $rows_inserted row(s) affected');</script>";
 		print "<p class='alert alert-success'><span class='glyphicon glyphicon-ok'></span> The chatbot has been successfully added to the database.</p>";
 		$user_id = $_SESSION['id'];
 		$sql_update_contributions = "UPDATE user SET contributions = contributions + 1 WHERE id = $user_id";
 		mysqli_query($con_app, $sql_update_contributions);
 	}
 	else {
-		//echo "<script type='text/javascript'>alert('Result: $rows_inserted row(s) affected');</script>";
+		echo "<script type='text/javascript'>alert('Result: $rows_inserted row(s) affected');</script>";
 		print("<p class='alert alert-danger'><span class='glyphicon glyphicon-remove'></span> The chatbot could not be added to the database. Any related error information will be shown below.</p>");
   	printf("%s\n", mysqli_error($con_app));
 	}
@@ -58,6 +58,7 @@ function createChatbot() {
 	mysqli_close($con_app);
 }
 
+
 function editChatbot() {
 
 	if(isset($_POST['chatbotName'])) {
@@ -66,11 +67,11 @@ function editChatbot() {
 	if(isset($_POST['chatbotTopic'])) {
 		$topic = ucfirst($_POST['chatbotTopic']);
 	}
-	if(isset($_POST['chatbotKeywords'])) {
-		$keywords = strtolower($_POST['chatbotKeywords']);
-	}
 	if(isset($_POST['chatbotAuthor'])) {
 		$author = $_POST['chatbotAuthor'];
+	}
+	if(isset($_POST['chatbotKeywords'])) {
+		$keywords = strtolower($_POST['chatbotKeywords']);
 	}
 		$last_updated_by = $_SESSION['firstname'] . " " .	$_SESSION['surname'];
 		$chatbot_id = $_GET['id'];
@@ -105,6 +106,7 @@ function editChatbot() {
 	// Close database connection
 	mysqli_close($con_app);
 }
+
 
 function verifyChatbot() {
 
@@ -157,6 +159,7 @@ function verifyChatbot() {
 	mysqli_close($con_app);
 }
 
+
 function deleteChatbot() {
 	// Get chatbot 'ID' value
 	if(isset($_GET['id'])) {
@@ -177,54 +180,6 @@ function deleteChatbot() {
 		echo "Error deleting record: " . mysqli_error($con_app);
 	}
 
-mysqli_close($con_app);
-}
-
-function getChatbotData(keyword) {
-
-	echo '
-	<div class="row">
-	<div class="col-md-12">
-
-		<div class="table-responsive">
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Intents</th>
-					<th scope="col">Responses</th>
-				</tr>
-			</thead>
-			<tbody>';
-
-			$sql_get_chatbot_intents = "SELECT example_1, example_2, example_3, example_4, example_5, example_6, example_7, example_8, example_9, example_10,
-			example_11, example_12, example_13, example_14, example_15, example_16, example_17, example_18, example_19, example_20,	example_21, example_22,
-			example_23, example_24, example_25, example_26, example_27, example_28, example_29, example_30 WHERE chatbot_id = $_GET[id] AND keyword = $_GET[keyword]";
-
-			$chatbot_intents = mysqli_query($con_app, $sql_get_chatbot_intents);
-
-			while($row = mysqli_fetch_array($chatbot_intents)) {
-				$example_1 = $row['example_1'];
-				$example_2 = $row['example_2'];
-				$example_3 = $row['example_3'];
-				$example_4 = $row['example_4'];
-				$example_5 = $row['example_5'];
-				$example_6 = $row['example_6'];
-				$example_7 = $row['example_7'];
-				$example_8 = $row['example_8'];
-				$example_9 = $row['example_9'];
-				$example_10 = $row['example_10'];
-				$example_11 = $row['example_11'];
-			}
-
-			echo "<tr><td>$example_1</td></tr>";
-
-			echo '
-			</tbody>
-		</table>
-		</div>
-	</div>
-	</div>';
-	
 mysqli_close($con_app);
 
 }

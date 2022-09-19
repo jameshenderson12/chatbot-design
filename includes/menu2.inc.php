@@ -17,9 +17,11 @@
         <li class="nav-item <?= ($active_page == 'about') ? 'active':''; ?>">
           <a class="nav-link" href="about.php"><i class="bi bi-question-diamond-fill"></i> About</a>
         </li>
+        <!--
 				<li class="nav-item <?= ($active_page == 'privacy') ? 'active':''; ?>">
           <a class="nav-link" href="privacy.php"><i class="bi bi-shield-lock-fill"></i></i> Privacy</a>
         </li>
+      -->
 				<li class="nav-item dropdown <?= (($active_page == 'new') || ($active_page == 'edit') || ($active_page == 'delete')) ? 'active':''; ?>">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTasks" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="bi bi-chat-right-text-fill"></i> Chatbots

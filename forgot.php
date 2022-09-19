@@ -41,7 +41,7 @@ include('includes/header.inc.php');
             <form id="forgotPassForm" name="forgotPassForm" class="form-horizontal" onSubmit="return false;">
                 <!-- Email Address -->
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="email" name="email" placeholder="Enter email address" required>
+                  <input class="form-control" id="email" name="email" placeholder="Enter email address">
                   <label for="email">Email</label>
                 </div>
                 <p id="status"></p> <!-- placeholder for message -->
@@ -68,19 +68,17 @@ include('includes/header.inc.php');
 
    </div><!--.container-->
 
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
   </body>
 </html>
 
 
 
 <?php
+/*
 // Ajax calls this code to execute
 include 'db_connect/db_connect.inc.php';
-if(isset($_POST['e'])){
-	$e = mysqli_real_escape_string($con_app, $_POST['e']);
+if(isset($_POST['email'])){
+	$e = mysqli_real_escape_string($con_app, $_POST['email']);
 	$sql = "SELECT id, username FROM user WHERE email='$e' LIMIT 1";
 	$query = mysqli_query($con_app, $sql);
 	$numrows = mysqli_num_rows($query);
@@ -99,6 +97,7 @@ if(isset($_POST['e'])){
 		$to = "$e";
     $subject = "Reset password for Chatbot Co-Creation Tool";
     $from = 'james.henderson@nottingham.ac.uk';
+    /*
     $message = "
     <!DOCTYPE html>
     <html>
@@ -167,7 +166,7 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	  header("location: index.php");
     exit();
     }
-}
+}*/
 ?>
 
 
